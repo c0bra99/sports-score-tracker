@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="SportsTracker" Class="SportsTrackerDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=c0bra99.is-a-geek.com;Initial Catalog=SportsTracker;User ID=SportsTracker" SettingsObjectName="SportsScoreTracker.DataAccessLayer.Properties.Settings" SettingsPropertyName="SportsTrackerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Team" Member="Teams">
+    <Type Name="Team">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LeagueID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Team_Game" Member="Games" ThisKey="ID" OtherKey="HomeTeamID" Type="Game" />
+      <Association Name="Team_Game1" Member="Games1" ThisKey="ID" OtherKey="AwayTeamID" Type="Game" />
+      <Association Name="Team_Prediction" Member="Predictions" ThisKey="ID" OtherKey="TeamID" Type="Prediction" />
+      <Association Name="League_Team" Member="League" ThisKey="LeagueID" OtherKey="ID" Type="League" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Game" Member="Games">
+    <Type Name="Game">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HomeTeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AwayTeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HomeScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AwayScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Game_Prediction" Member="Predictions" ThisKey="ID" OtherKey="GameID" Type="Prediction" />
+      <Association Name="Game_Comment" Member="Comments" ThisKey="ID" OtherKey="GameID" Type="Comment" />
+      <Association Name="Team_Game" Member="Team" ThisKey="HomeTeamID" OtherKey="ID" Type="Team" IsForeignKey="true" />
+      <Association Name="Team_Game1" Member="Team1" ThisKey="AwayTeamID" OtherKey="ID" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.League" Member="Leagues">
+    <Type Name="League">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SportID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegisteredUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="League_Team" Member="Teams" ThisKey="ID" OtherKey="LeagueID" Type="Team" />
+      <Association Name="RegisteredUser_League" Member="RegisteredUser" ThisKey="RegisteredUserID" OtherKey="ID" Type="RegisteredUser" IsForeignKey="true" />
+      <Association Name="Sport_League" Member="Sport" ThisKey="SportID" OtherKey="ID" Type="Sport" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prediction" Member="Predictions">
+    <Type Name="Prediction">
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Game_Prediction" Member="Game" ThisKey="GameID" OtherKey="ID" Type="Game" IsForeignKey="true" />
+      <Association Name="Team_Prediction" Member="Team" ThisKey="TeamID" OtherKey="ID" Type="Team" IsForeignKey="true" />
+      <Association Name="RegisteredUser_Prediction" Member="RegisteredUser" ThisKey="UserID" OtherKey="ID" Type="RegisteredUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RegisteredUser" Member="RegisteredUsers">
+    <Type Name="RegisteredUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="RegisteredUser_League" Member="Leagues" ThisKey="ID" OtherKey="RegisteredUserID" Type="League" />
+      <Association Name="RegisteredUser_Prediction" Member="Predictions" ThisKey="ID" OtherKey="UserID" Type="Prediction" />
+      <Association Name="RegisteredUser_Comment" Member="Comments" ThisKey="ID" OtherKey="UserID" Type="Comment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sport" Member="Sports">
+    <Type Name="Sport">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Sport_League" Member="Leagues" ThisKey="ID" OtherKey="SportID" Type="League" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comment" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="Game_Comment" Member="Game" ThisKey="GameID" OtherKey="ID" Type="Game" IsForeignKey="true" />
+      <Association Name="RegisteredUser_Comment" Member="RegisteredUser" ThisKey="UserID" OtherKey="ID" Type="RegisteredUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetPredictionResultsByGameID" Method="GetPredictionResultsByGameID">
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetPredictionResultsByGameIDResult">
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Vote" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPredictions" Method="GetPredictions">
+    <ElementType Name="GetPredictionsResult">
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Prediction_Delete" Method="Prediction_Delete">
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TeamID" Parameter="teamID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Prediction_Insert" Method="Prediction_Insert">
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TeamID" Parameter="teamID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetCommentsByGameID" Method="GetCommentsByGameID">
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCommentsByGameIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCommentsByUserID" Method="GetCommentsByUserID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCommentsByUserIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
