@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SportsTracker" Class="SportsTrackerDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=c0bra99.is-a-geek.com;Initial Catalog=SportsTracker;User ID=SportsTracker" SettingsObjectName="SportsScoreTracker.DataAccessLayer.Properties.Settings" SettingsPropertyName="SportsTrackerConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=c0bra99.is-a-geek.com;Initial Catalog=SportsTracker;Persist Security Info=True;User ID=SportsTracker" SettingsObjectName="SportsScoreTracker.DataAccessLayer.Properties.Settings" SettingsPropertyName="SportsTrackerConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Team" Member="Teams">
     <Type Name="Team">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -125,6 +125,32 @@
       <Column Name="Type" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Text" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSports" Method="GetSports">
+    <ElementType Name="GetSportsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetLeaguesBySportID" Method="GetLeaguesBySportID">
+    <Parameter Name="SportID" Parameter="sportID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetLeaguesBySportIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SportID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegisteredUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetScheduleByDateRange" Method="GetScheduleByDateRange">
+    <Parameter Name="LeagueID" Parameter="leagueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="From" Parameter="from" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="To" Parameter="to" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="GetScheduleByDateRangeResult">
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AwayTeam" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="HomeTeam" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>
