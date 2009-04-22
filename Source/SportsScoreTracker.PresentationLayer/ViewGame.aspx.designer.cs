@@ -11,6 +11,6 @@
 namespace SportsScoreTracker.PresentationLayer {
     
     
-    public partial class Default {
+    public partial class ViewGame {
     }
 }

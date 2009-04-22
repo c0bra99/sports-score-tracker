@@ -1,0 +1,44 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="SportsScoreTracker.PresentationLayer.MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+    <link href="Stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="margin:2px 10px 2px 10px;">
+    <form id="form1" runat="server">
+    <table border="0" cellspacing="0" cellpadding="0" id="header" style="width:100%; background-color:#7F0000;">
+        <tr>
+            <td>
+                <img src="images/banner.png" style="width: 505px; height: 68px;" alt="Sports Score Tracker" />
+            </td>
+        </tr>
+    </table>
+    <table style="width:100%;">
+        <tr>
+            <%--Menu--%>
+            <td id="content-left">
+                <asp:TreeView ID="treeMainMenu" runat="server" ExpandDepth="0">
+                </asp:TreeView>
+            </td>
+            <%--Content--%>
+            <td id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+            </td>
+        </tr>
+        </table>
+        <table border="0" cellspacing="0" cellpadding="0" id="footer">
+            <tr>
+                <td>
+                    <p>Copyright © 2009 Sports Score Tracker</p>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+

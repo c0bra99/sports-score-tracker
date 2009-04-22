@@ -1,0 +1,95 @@
+﻿body
+{
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	color:#666666;
+	margin:15px 40px;
+	background: #CBCBCB url(bg-main.gif) repeat-x;
+	font-size:.72em;
+}
+
+#content p, #content-right p, table {
+	margin:0px 0px 20px 0px;
+	}
+
+
+#content-left {
+	background-color:#F6F6F6;
+	width:150px;
+	padding:10px;
+	vertical-align:top;
+	}
+	
+	
+#content {
+	background-color:#FFFFFF;
+	padding:10px;
+	border-left:1px dashed #D0D0BF;
+	border-right:1px dashed #D0D0BF;
+	vertical-align:top;
+	}
+
+/******************
+LINKS
+******************/
+
+/* LINK VISTED HOVER ACTIVE selectors must remain in this order to work */
+a:link {
+	color:#7F0000;
+	}
+
+a:visited {
+	color:#4E0000;
+	}
+
+a:hover {
+	color:#0F1BFF;
+	text-decoration:none;
+	}
+
+a:active {
+	color:#669966;
+	}
+
+
+
+/******************
+HEADINGS
+******************/
+
+h1 {
+	font-size:1.6em;
+	padding:0;
+	margin:0 0 10px 0;
+	}
+
+h2 {
+	font-size:1.1em;
+	}
+
+h3 {
+	font-size:1.4em;
+	}
+	
+h4 {
+	font-size:1.1em;
+	}
+	
+h5 {
+	font-size:.9em;
+	}
+	
+h6 {
+	font-size:.8em;
+	}
+
+
+#footer {
+	width:100%;
+	padding:10px;
+	border-bottom:2px solid #7F7F7F;
+	border-right:1px solid #7F7F7F;
+	border-left:1px solid #EDEDED;
+	text-align:center;
+	background: #FFFFFF url(images/bg-topnav.gif) repeat-x;
+	table-layout:fixed;
+	}
