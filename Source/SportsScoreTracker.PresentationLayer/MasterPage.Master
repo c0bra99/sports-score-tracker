@@ -9,10 +9,50 @@
 </head>
 <body style="margin:2px 10px 2px 10px;">
     <form id="form1" runat="server">
-    <table border="0" cellspacing="0" cellpadding="0" id="header" style="width:100%; background-color:#7F0000;">
+    <table border="0" cellspacing="0" cellpadding="0" id="header" style="width:100%; background-color:#7F0000; color:#000000; l">
         <tr>
             <td>
                 <img src="images/banner.png" style="width: 505px; height: 68px;" alt="Sports Score Tracker" />
+            </td>
+            <td>
+                <asp:Panel ID="pnlLogin" runat="server" Visible="True">
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label2" runat="server" Text="Email:"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text="Password:"></asp:Label>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:Button ID="btnLogin" runat="server" Text="Login" onclick="btnLogin_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Register.aspx" ForeColor="DarkBlue">Register</asp:HyperLink>
+                            </td>
+                            <td style="color:Red;">
+                                <asp:Label ID="lblLoginFailed" runat="server" Text="Login Failed" Visible="false"></asp:Label>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <asp:Panel ID="pnlLoggedIn" runat="server" Visible="False">
+                    Welcome [<asp:Label ID="lblEmailLoggedIn" runat="server" Text="email address"></asp:Label>
+                    ]&nbsp;
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout" onclick="btnLogout_Click" />
+                </asp:Panel>
             </td>
         </tr>
     </table>

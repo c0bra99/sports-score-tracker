@@ -201,6 +201,34 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), leagueID, from, to);
 			return ((ISingleResult<GetScheduleByDateRangeResult>)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.AuthorizeUser")]
+		public ISingleResult<AuthorizeUserResult> AuthorizeUser([Parameter(Name="Email", DbType="NVarChar(100)")] string email, [Parameter(Name="Password", DbType="NVarChar(50)")] string password)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, password);
+			return ((ISingleResult<AuthorizeUserResult>)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.CountEmailsRegistered")]
+		public ISingleResult<CountEmailsRegisteredResult> CountEmailsRegistered([Parameter(Name="Email", DbType="NVarChar(100)")] string email)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email);
+			return ((ISingleResult<CountEmailsRegisteredResult>)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.RegisteredUser_Update")]
+		public int RegisteredUser_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="Email", DbType="NVarChar(100)")] string email, [Parameter(Name="FirstName", DbType="NVarChar(50)")] string firstName, [Parameter(Name="LastName", DbType="NVarChar(50)")] string lastName, [Parameter(Name="Password", DbType="NVarChar(50)")] string password, [Parameter(Name="IsAdmin", DbType="Bit")] System.Nullable<bool> isAdmin)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, email, firstName, lastName, password, isAdmin);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.RegisteredUser_Insert")]
+		public int RegisteredUser_Insert([Parameter(Name="Email", DbType="NVarChar(100)")] string email, [Parameter(Name="FirstName", DbType="NVarChar(50)")] string firstName, [Parameter(Name="LastName", DbType="NVarChar(50)")] string lastName, [Parameter(Name="Password", DbType="NVarChar(50)")] string password, [Parameter(Name="IsAdmin", DbType="Bit")] System.Nullable<bool> isAdmin)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, firstName, lastName, password, isAdmin);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
@@ -2416,6 +2444,148 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._HomeTeam != value))
 				{
 					this._HomeTeam = value;
+				}
+			}
+		}
+	}
+	
+	public partial class AuthorizeUserResult
+	{
+		
+		private int _ID;
+		
+		private string _Email;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Password;
+		
+		private bool _IsAdmin;
+		
+		public AuthorizeUserResult()
+		{
+		}
+		
+		[Column(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_FirstName", DbType="NVarChar(50)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_LastName", DbType="NVarChar(50)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this._Password = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_IsAdmin", DbType="Bit NOT NULL")]
+		public bool IsAdmin
+		{
+			get
+			{
+				return this._IsAdmin;
+			}
+			set
+			{
+				if ((this._IsAdmin != value))
+				{
+					this._IsAdmin = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CountEmailsRegisteredResult
+	{
+		
+		private System.Nullable<int> _UsersFoundWithEmailAddress;
+		
+		public CountEmailsRegisteredResult()
+		{
+		}
+		
+		[Column(Storage="_UsersFoundWithEmailAddress", DbType="Int")]
+		public System.Nullable<int> UsersFoundWithEmailAddress
+		{
+			get
+			{
+				return this._UsersFoundWithEmailAddress;
+			}
+			set
+			{
+				if ((this._UsersFoundWithEmailAddress != value))
+				{
+					this._UsersFoundWithEmailAddress = value;
 				}
 			}
 		}
