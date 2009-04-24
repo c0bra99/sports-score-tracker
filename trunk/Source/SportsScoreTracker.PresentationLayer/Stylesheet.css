@@ -93,3 +93,8 @@ h6 {
 	background: #FFFFFF url(images/bg-topnav.gif) repeat-x;
 	table-layout:fixed;
 	}
+	
+#login
+{
+	color:#000000;
+}
