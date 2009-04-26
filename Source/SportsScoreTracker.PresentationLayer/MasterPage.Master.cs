@@ -25,6 +25,7 @@ namespace SportsScoreTracker.PresentationLayer
                 foreach (Sport sport in sports)
                 {
                     TreeNode sportNode = new TreeNode(sport.Name);
+                    sportNode.SelectAction = TreeNodeSelectAction.Expand; //remove the link for the root nodes
                     treeMainMenu.Nodes.Add(sportNode);
 
                     List<League> leagues = League.GetLeaguesBySportID(sport.ID);
