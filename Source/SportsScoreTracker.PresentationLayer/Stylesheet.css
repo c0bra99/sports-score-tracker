@@ -98,3 +98,15 @@ h6 {
 {
 	color:#000000;
 }
+
+.Error
+{
+	color:#FF0000;
+}
+
+.Button
+{
+    font-size: 10px;
+    cursor: hand;
+    font-family: verdana;
+}
