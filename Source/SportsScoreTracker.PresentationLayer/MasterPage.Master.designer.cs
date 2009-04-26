@@ -86,6 +86,15 @@ namespace SportsScoreTracker.PresentationLayer {
         protected global::System.Web.UI.WebControls.HyperLink lnkRegister;
         
         /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        
+        /// <summary>
         /// lblLoginFailed control.
         /// </summary>
         /// <remarks>
@@ -104,13 +113,13 @@ namespace SportsScoreTracker.PresentationLayer {
         protected global::System.Web.UI.WebControls.Panel pnlLoggedIn;
         
         /// <summary>
-        /// lblEmailLoggedIn control.
+        /// lblLoggedInName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailLoggedIn;
+        protected global::System.Web.UI.WebControls.Label lblLoggedInName;
         
         /// <summary>
         /// btnLogout control.
