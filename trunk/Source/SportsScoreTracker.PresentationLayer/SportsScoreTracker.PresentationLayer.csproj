@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="images\banner.png" />
+    <Content Include="images\banner.jpg" />
     <Content Include="images\bg-topnav.gif" />
     <Content Include="LeagueSchedule.aspx" />
     <Content Include="MasterPage.Master" />
