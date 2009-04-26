@@ -45,7 +45,7 @@
         <classShapeMoniker Id="c99a286e-a223-4c22-b95a-3ad604a852e4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 4.28407348632813); (9 : 4.28407348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.25 : 4.28407348632813); (8.66666666666667 : 4.28407348632813 : JumpStart); (8.83333333333333 : 4.28407348632813 : JumpEnd); (9 : 4.28407348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SportsTrackerDBDataContext/Team/Team_Game1" />
       <nodes>
         <classShapeMoniker Id="cfc1e09c-b7fd-4728-9bd4-bd698c384a42" />

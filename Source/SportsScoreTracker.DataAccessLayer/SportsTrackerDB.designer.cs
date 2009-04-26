@@ -229,6 +229,13 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, firstName, lastName, password, isAdmin);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.ChangePassword")]
+		public int ChangePassword([Parameter(Name="Email", DbType="NVarChar(100)")] string email, [Parameter(Name="Password", DbType="NVarChar(50)")] string password)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, password);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
