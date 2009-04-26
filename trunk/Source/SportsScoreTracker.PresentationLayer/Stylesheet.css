@@ -1,5 +1,4 @@
-﻿body
-{
+﻿body {
 	font-family:Geneva, Arial, Helvetica, sans-serif;
 	color:#666666;
 	margin:15px 40px;
@@ -8,8 +7,8 @@
 }
 
 #content p, #content-right p, table {
-	margin:0px 0px 20px 0px;
-	}
+
+}
 
 
 #content-left {
@@ -17,7 +16,7 @@
 	width:150px;
 	padding:10px;
 	vertical-align:top;
-	}
+}
 	
 	
 #content {
@@ -26,7 +25,7 @@
 	border-left:1px dashed #D0D0BF;
 	border-right:1px dashed #D0D0BF;
 	vertical-align:top;
-	}
+}
 
 /******************
 LINKS
@@ -35,20 +34,20 @@ LINKS
 /* LINK VISTED HOVER ACTIVE selectors must remain in this order to work */
 a:link {
 	color:#7F0000;
-	}
+}
 
 a:visited {
 	color:#4E0000;
-	}
+}
 
 a:hover {
 	color:#0F1BFF;
 	text-decoration:none;
-	}
+}
 
 a:active {
 	color:#669966;
-	}
+}
 
 
 
@@ -60,27 +59,27 @@ h1 {
 	font-size:1.6em;
 	padding:0;
 	margin:0 0 10px 0;
-	}
+}
 
 h2 {
 	font-size:1.1em;
-	}
+}
 
 h3 {
 	font-size:1.4em;
-	}
+}
 	
 h4 {
 	font-size:1.1em;
-	}
+}
 	
 h5 {
 	font-size:.9em;
-	}
+}
 	
 h6 {
 	font-size:.8em;
-	}
+}
 
 
 #footer {
@@ -92,20 +91,17 @@ h6 {
 	text-align:center;
 	background: #FFFFFF url(images/bg-topnav.gif) repeat-x;
 	table-layout:fixed;
-	}
+}
 	
-#login
-{
+#login {
 	color:#000000;
 }
 
-.Error
-{
+.Error {
 	color:#FF0000;
 }
 
-.Button
-{
+.Button {
     font-size: 10px;
     cursor: hand;
     font-family: verdana;
