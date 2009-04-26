@@ -150,7 +150,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
         {
             MailMessage email = new MailMessage(from, to, subject, body);
             SmtpClient client = new SmtpClient("mail.test.com");
-
+            
             client.Send(email);
         }
 
@@ -209,6 +209,48 @@ namespace SportsScoreTracker.BusinessLogicLayer
                 }
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// Resets and emails the user their new password, also returns the new password
+        /// </summary>
+        public static bool ResetPassword(string userEmail)
+        {
+            if (!RegisteredUser.IsEmailRegistered(userEmail))
+            {
+                return false;
+            }
+
+            string newPassword = null;
+
+            //purposely leaving out IL0O as they look too similiar
+            string allowedChars = "ABCDEFGHJKMNPQRSTUVWXYZ123456789-!?@$_+#~%*";
+            Random rNum = new Random();
+
+            //added these 2 integers to prevent an endless loop if the password policy is never met for some reason.
+            int maxSecurePasswordTries = 1024;
+            int maxPasswordTry = 0;
+            do
+            {
+                newPassword = string.Empty; //empty the string in case we are having to redo the password b/c of insecure
+
+                for (int i = 0; i < 10; i++)
+                {
+                    newPassword += allowedChars[rNum.Next(allowedChars.Length)];
+                }
+                maxPasswordTry++;
+            } while (!IsPasswordSecure(newPassword) && maxPasswordTry < maxSecurePasswordTries);
+            //make sure the password meets our complexity policies before continuing
+
+            string passHash = GetMD5Hash(newPassword); //Get the MD5 hash of the new password
+
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+            db.ChangePassword(userEmail, passHash); //change the password in the DB
+
+            SendEmail("PasswordReset@SportsScoreTracker.com", userEmail, "Password Reset Notification", "Your password has been reset\r\nYour new password is: " + newPassword);
+     
+            return true;
         }
     }
 }
