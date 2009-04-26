@@ -38,26 +38,38 @@ namespace SportsScoreTracker.PresentationLayer
 
             List<ScheduleEntry> entries = ScheduleEntry.GetScheduleByDateRange(leagueID, calFrom.SelectedDate, calTo.SelectedDate.AddDays(1).AddSeconds(-1));
 
-            foreach (ScheduleEntry entry in entries)
+            if (entries.Count == 0)
             {
-                TableRow row = new TableRow();
-                TableCell dateCell = new TableCell();
-                TableCell awayCell = new TableCell();
-                TableCell homeCell = new TableCell();
-                row.Cells.Add(dateCell);
-                row.Cells.Add(awayCell);
-                row.Cells.Add(homeCell);
+                lblErrorMessage.Text = "There were no games found within the selected date range.";
+                lblErrorMessage.Visible = true;
+                tblGames.Visible = false;
+            }
+            else
+            {
+                lblErrorMessage.Visible = false;
+                tblGames.Visible = true;
 
-                HyperLink linkToGame = new HyperLink();
-                linkToGame.Text = entry.Date.ToString("g");
-                linkToGame.NavigateUrl = ResolveUrl("~/ViewGame.aspx") + "?GameID=" + entry.GameID;
+                foreach (ScheduleEntry entry in entries)
+                {
+                    TableRow row = new TableRow();
+                    TableCell dateCell = new TableCell();
+                    TableCell awayCell = new TableCell();
+                    TableCell homeCell = new TableCell();
+                    row.Cells.Add(dateCell);
+                    row.Cells.Add(awayCell);
+                    row.Cells.Add(homeCell);
 
-                dateCell.Controls.Add(linkToGame);
-                
-                awayCell.Text = entry.AwayTeam;
-                homeCell.Text = entry.HomeTeam;
+                    HyperLink linkToGame = new HyperLink();
+                    linkToGame.Text = entry.Date.ToString("g");
+                    linkToGame.NavigateUrl = ResolveUrl("~/ViewGame.aspx") + "?GameID=" + entry.GameID;
 
-                tblGames.Rows.Add(row);
+                    dateCell.Controls.Add(linkToGame);
+
+                    awayCell.Text = entry.AwayTeam;
+                    homeCell.Text = entry.HomeTeam;
+
+                    tblGames.Rows.Add(row);
+                }
             }
         }
     }
