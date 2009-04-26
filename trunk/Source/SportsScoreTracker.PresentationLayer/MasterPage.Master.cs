@@ -105,7 +105,7 @@ namespace SportsScoreTracker.PresentationLayer
                 RegisteredUser user = GetLoggedInUser();
                 pnlLogin.Visible = false;
                 pnlLoggedIn.Visible = true;
-                lblEmailLoggedIn.Text = user.FirstName;
+                lblLoggedInName.Text = user.FirstName;
             }
             else //the user is not logged in
             {
