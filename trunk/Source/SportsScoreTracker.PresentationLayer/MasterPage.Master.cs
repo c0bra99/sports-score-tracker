@@ -53,7 +53,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// <summary>
         /// Determines if a user is logged in or not
         /// </summary>
-        protected bool IsLoggedIn()
+        public bool IsLoggedIn()
         {
             RegisteredUser user = GetLoggedInUser();
             if (user != null)
@@ -65,7 +65,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// <summary>
         /// Determines if an admin is logged in or not
         /// </summary>
-        protected bool IsAdminLoggedIn()
+        public bool IsAdminLoggedIn()
         {
             RegisteredUser user = GetLoggedInUser();
             if (user != null)
