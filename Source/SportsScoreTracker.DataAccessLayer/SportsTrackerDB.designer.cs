@@ -167,13 +167,6 @@ namespace SportsScoreTracker.DataAccessLayer
 			return ((int)(result.ReturnValue));
 		}
 		
-		[Function(Name="dbo.GetCommentsByGameID")]
-		public ISingleResult<GetCommentsByGameIDResult> GetCommentsByGameID([Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gameID);
-			return ((ISingleResult<GetCommentsByGameIDResult>)(result.ReturnValue));
-		}
-		
 		[Function(Name="dbo.GetCommentsByUserID")]
 		public ISingleResult<GetCommentsByUserIDResult> GetCommentsByUserID([Parameter(Name="UserID", DbType="Int")] System.Nullable<int> userID)
 		{
@@ -234,6 +227,20 @@ namespace SportsScoreTracker.DataAccessLayer
 		public int ChangePassword([Parameter(Name="Email", DbType="NVarChar(100)")] string email, [Parameter(Name="Password", DbType="NVarChar(50)")] string password)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, password);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.GetCommentsByGameID")]
+		public ISingleResult<GetCommentsByGameIDResult> GetCommentsByGameID([Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gameID);
+			return ((ISingleResult<GetCommentsByGameIDResult>)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Comment_Delete")]
+		public int Comment_Delete([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -2020,122 +2027,6 @@ namespace SportsScoreTracker.DataAccessLayer
 		}
 	}
 	
-	public partial class GetCommentsByGameIDResult
-	{
-		
-		private int _ID;
-		
-		private int _UserID;
-		
-		private int _GameID;
-		
-		private System.Nullable<short> _Type;
-		
-		private System.DateTime _Timestamp;
-		
-		private string _Text;
-		
-		public GetCommentsByGameIDResult()
-		{
-		}
-		
-		[Column(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_GameID", DbType="Int NOT NULL")]
-		public int GameID
-		{
-			get
-			{
-				return this._GameID;
-			}
-			set
-			{
-				if ((this._GameID != value))
-				{
-					this._GameID = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_Type", DbType="SmallInt")]
-		public System.Nullable<short> Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_Timestamp", DbType="DateTime NOT NULL")]
-		public System.DateTime Timestamp
-		{
-			get
-			{
-				return this._Timestamp;
-			}
-			set
-			{
-				if ((this._Timestamp != value))
-				{
-					this._Timestamp = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_Text", DbType="NVarChar(1000)")]
-		public string Text
-		{
-			get
-			{
-				return this._Text;
-			}
-			set
-			{
-				if ((this._Text != value))
-				{
-					this._Text = value;
-				}
-			}
-		}
-	}
-	
 	public partial class GetCommentsByUserIDResult
 	{
 		
@@ -2593,6 +2484,104 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._UsersFoundWithEmailAddress != value))
 				{
 					this._UsersFoundWithEmailAddress = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetCommentsByGameIDResult
+	{
+		
+		private string _FirstName;
+		
+		private int _CommentID;
+		
+		private System.Nullable<short> _Type;
+		
+		private System.DateTime _Timestamp;
+		
+		private string _Text;
+		
+		public GetCommentsByGameIDResult()
+		{
+		}
+		
+		[Column(Storage="_FirstName", DbType="NVarChar(50)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_CommentID", DbType="Int NOT NULL")]
+		public int CommentID
+		{
+			get
+			{
+				return this._CommentID;
+			}
+			set
+			{
+				if ((this._CommentID != value))
+				{
+					this._CommentID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Type", DbType="SmallInt")]
+		public System.Nullable<short> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Timestamp", DbType="DateTime NOT NULL")]
+		public System.DateTime Timestamp
+		{
+			get
+			{
+				return this._Timestamp;
+			}
+			set
+			{
+				if ((this._Timestamp != value))
+				{
+					this._Timestamp = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Text", DbType="NVarChar(300)")]
+		public string Text
+		{
+			get
+			{
+				return this._Text;
+			}
+			set
+			{
+				if ((this._Text != value))
+				{
+					this._Text = value;
 				}
 			}
 		}
