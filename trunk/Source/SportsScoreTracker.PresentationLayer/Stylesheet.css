@@ -55,13 +55,13 @@ a:active {
 HEADINGS
 ******************/
 
-h1 {
+h1, .GameTeams {
 	font-size:1.6em;
 	padding:0;
 	margin:0 0 10px 0;
 }
 
-h2 {
+h2, .GameScores {
 	font-size:1.1em;
 }
 
