@@ -17,8 +17,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack) //Only true the first time the page is visited
+            if (!IsPostBack && !ScriptManager1.IsInAsyncPostBack) //Only true the first time the page is visited
             {
                 calFrom.SelectedDate = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
                 calTo.SelectedDate = calFrom.SelectedDate.AddDays(6);
