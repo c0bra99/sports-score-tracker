@@ -110,6 +110,7 @@
     <Content Include="Default.aspx" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\bg-topnav.gif" />
+    <Content Include="images\deleteX.gif" />
     <Content Include="LeagueSchedule.aspx" />
     <Content Include="MasterPage.Master" />
     <Content Include="Register.aspx" />
