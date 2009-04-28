@@ -52,13 +52,13 @@ namespace SportsScoreTracker.DataAccessLayer
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
     #endregion
-
-        public SportsTrackerDBDataContext() :
-            base(global::SportsScoreTracker.DataAccessLayer.Properties.Settings.Default.SportsTrackerConnectionString1, mappingSource)
-        {
-            OnCreated();
-        }
-
+		
+		public SportsTrackerDBDataContext() : 
+				base(global::SportsScoreTracker.DataAccessLayer.Properties.Settings.Default.SportsTrackerConnectionString1, mappingSource)
+		{
+			OnCreated();
+		}
+		
 		public SportsTrackerDBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -262,6 +262,27 @@ namespace SportsScoreTracker.DataAccessLayer
 		public int Sport_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="Name", DbType="NVarChar(50)")] string name)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, name);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.League_Delete")]
+		public int League_Delete([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.League_Insert")]
+		public int League_Insert([Parameter(Name="SportID", DbType="Int")] System.Nullable<int> sportID, [Parameter(Name="RegisteredUserID", DbType="Int")] System.Nullable<int> registeredUserID, [Parameter(Name="Name", DbType="NVarChar(50)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sportID, registeredUserID, name);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.League_Update")]
+		public int League_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="SportID", DbType="Int")] System.Nullable<int> sportID, [Parameter(Name="RegisteredUserID", DbType="Int")] System.Nullable<int> registeredUserID, [Parameter(Name="Name", DbType="NVarChar(50)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, sportID, registeredUserID, name);
 			return ((int)(result.ReturnValue));
 		}
 	}
