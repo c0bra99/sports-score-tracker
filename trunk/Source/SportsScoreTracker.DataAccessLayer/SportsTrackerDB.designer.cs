@@ -52,7 +52,13 @@ namespace SportsScoreTracker.DataAccessLayer
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
     #endregion
-		
+
+        public SportsTrackerDBDataContext() :
+            base(global::SportsScoreTracker.DataAccessLayer.Properties.Settings.Default.SportsTrackerConnectionString1, mappingSource)
+        {
+            OnCreated();
+        }
+
 		public SportsTrackerDBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
