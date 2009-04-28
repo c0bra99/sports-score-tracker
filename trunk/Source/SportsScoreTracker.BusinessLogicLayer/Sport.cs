@@ -43,5 +43,23 @@ namespace SportsScoreTracker.BusinessLogicLayer
                                             };
             return sports.ToList();
         }
+
+
+        /// <summary>
+        /// saves the new / updated sport info to the database
+        /// </summary>
+        public void Save()
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            if (this.ID == -1) //new sport, need to insert
+            {
+                db.Sport_Insert(this.Name);
+            }
+            else //old sport, need to update
+            {
+                db.Sport_Update(this.ID, this.Name);
+            }
+        }
     }
 }
