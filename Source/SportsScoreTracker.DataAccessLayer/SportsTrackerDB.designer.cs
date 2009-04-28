@@ -243,6 +243,13 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.GetGameToDisplay")]
+		public ISingleResult<GetGameToDisplayResult> GetGameToDisplay([Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gameID);
+			return ((ISingleResult<GetGameToDisplayResult>)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
@@ -2582,6 +2589,248 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._Text != value))
 				{
 					this._Text = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetGameToDisplayResult
+	{
+		
+		private System.DateTime _GameDate;
+		
+		private string _AwayTeam;
+		
+		private string _HomeTeam;
+		
+		private System.Nullable<int> _AwayScore;
+		
+		private System.Nullable<int> _HomeScore;
+		
+		private System.Nullable<int> _AwayTeamVotes;
+		
+		private System.Nullable<int> _HomeTeamVotes;
+		
+		private System.Nullable<int> _AwayWins;
+		
+		private System.Nullable<int> _AwayLosses;
+		
+		private System.Nullable<double> _AwayWinningPercentage;
+		
+		private System.Nullable<int> _HomeWins;
+		
+		private System.Nullable<int> _HomeLosses;
+		
+		private System.Nullable<double> _HomeWinningPercentage;
+		
+		public GetGameToDisplayResult()
+		{
+		}
+		
+		[Column(Storage="_GameDate", DbType="DateTime NOT NULL")]
+		public System.DateTime GameDate
+		{
+			get
+			{
+				return this._GameDate;
+			}
+			set
+			{
+				if ((this._GameDate != value))
+				{
+					this._GameDate = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayTeam", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string AwayTeam
+		{
+			get
+			{
+				return this._AwayTeam;
+			}
+			set
+			{
+				if ((this._AwayTeam != value))
+				{
+					this._AwayTeam = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeTeam", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string HomeTeam
+		{
+			get
+			{
+				return this._HomeTeam;
+			}
+			set
+			{
+				if ((this._HomeTeam != value))
+				{
+					this._HomeTeam = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayScore", DbType="Int")]
+		public System.Nullable<int> AwayScore
+		{
+			get
+			{
+				return this._AwayScore;
+			}
+			set
+			{
+				if ((this._AwayScore != value))
+				{
+					this._AwayScore = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeScore", DbType="Int")]
+		public System.Nullable<int> HomeScore
+		{
+			get
+			{
+				return this._HomeScore;
+			}
+			set
+			{
+				if ((this._HomeScore != value))
+				{
+					this._HomeScore = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayTeamVotes", DbType="Int")]
+		public System.Nullable<int> AwayTeamVotes
+		{
+			get
+			{
+				return this._AwayTeamVotes;
+			}
+			set
+			{
+				if ((this._AwayTeamVotes != value))
+				{
+					this._AwayTeamVotes = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeTeamVotes", DbType="Int")]
+		public System.Nullable<int> HomeTeamVotes
+		{
+			get
+			{
+				return this._HomeTeamVotes;
+			}
+			set
+			{
+				if ((this._HomeTeamVotes != value))
+				{
+					this._HomeTeamVotes = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayWins", DbType="Int")]
+		public System.Nullable<int> AwayWins
+		{
+			get
+			{
+				return this._AwayWins;
+			}
+			set
+			{
+				if ((this._AwayWins != value))
+				{
+					this._AwayWins = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayLosses", DbType="Int")]
+		public System.Nullable<int> AwayLosses
+		{
+			get
+			{
+				return this._AwayLosses;
+			}
+			set
+			{
+				if ((this._AwayLosses != value))
+				{
+					this._AwayLosses = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayWinningPercentage", DbType="Float")]
+		public System.Nullable<double> AwayWinningPercentage
+		{
+			get
+			{
+				return this._AwayWinningPercentage;
+			}
+			set
+			{
+				if ((this._AwayWinningPercentage != value))
+				{
+					this._AwayWinningPercentage = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeWins", DbType="Int")]
+		public System.Nullable<int> HomeWins
+		{
+			get
+			{
+				return this._HomeWins;
+			}
+			set
+			{
+				if ((this._HomeWins != value))
+				{
+					this._HomeWins = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeLosses", DbType="Int")]
+		public System.Nullable<int> HomeLosses
+		{
+			get
+			{
+				return this._HomeLosses;
+			}
+			set
+			{
+				if ((this._HomeLosses != value))
+				{
+					this._HomeLosses = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeWinningPercentage", DbType="Float")]
+		public System.Nullable<double> HomeWinningPercentage
+		{
+			get
+			{
+				return this._HomeWinningPercentage;
+			}
+			set
+			{
+				if ((this._HomeWinningPercentage != value))
+				{
+					this._HomeWinningPercentage = value;
 				}
 			}
 		}

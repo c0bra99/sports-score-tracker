@@ -196,4 +196,22 @@
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.GetGameToDisplay" Method="GetGameToDisplay">
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetGameToDisplayResult">
+      <Column Name="GameDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AwayTeam" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="HomeTeam" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AwayScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HomeScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AwayTeamVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HomeTeamVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AwayWins" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AwayLosses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AwayWinningPercentage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HomeWins" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HomeLosses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HomeWinningPercentage" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
