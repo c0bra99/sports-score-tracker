@@ -12,7 +12,7 @@
             </td>
             <td>
                 <asp:TextBox ID="txtEmail" runat="server" />
-                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required." ToolTip="Email is required." ValidationGroup="CreateUserWizard1" Text="*" />
+                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required." ToolTip="Email is required." Text="*" />
             </td>
         </tr>
         <tr>
@@ -37,7 +37,7 @@
             </td>
             <td>
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Wrap="False" />
-                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="CreateUserWizard1" Text="*" />
+                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ToolTip="Password is required." Text="*" />
             </td>
         </tr>
         <tr>
@@ -46,12 +46,13 @@
             </td>
             <td>
                 <asp:TextBox ID="txtPasswordConfirm" runat="server" TextMode="Password" />
-                <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="txtPasswordConfirm" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="CreateUserWizard1" Text="*" />
+                <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="txtPasswordConfirm" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." Text="*" />
             </td>
         </tr>
         <tr>
             <td align="center" colspan="2">
-                <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtPasswordConfirm" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="CreateUserWizard1" />
+                <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtPasswordConfirm" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."/>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
             </td>
         </tr>
         <tr>
@@ -61,7 +62,7 @@
         </tr>
         <tr>
             <td align="center" colspan="2" class="Error">
-                <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" CssClass="Button" onclick="btnCreateAccount_Click" ValidationGroup="CreateUserWizard1" />
+                <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" CssClass="Button" onclick="btnCreateAccount_Click"/>
             </td>
         </tr>
     </table>

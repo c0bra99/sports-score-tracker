@@ -44,7 +44,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// Gets the user that is logged in (or returns null if they are not logged in)
         /// </summary>
         /// <returns></returns>
-        protected RegisteredUser GetLoggedInUser()
+        public RegisteredUser GetLoggedInUser()
         {
             return (RegisteredUser)Session["User"];
         }
