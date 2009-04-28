@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SportsTracker" Class="SportsTrackerDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=c0bra99.is-a-geek.com;Initial Catalog=SportsTracker;Persist Security Info=True;User ID=SportsTracker" SettingsObjectName="SportsScoreTracker.DataAccessLayer.Properties.Settings" SettingsPropertyName="SportsTrackerConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Team" Member="Teams">
     <Type Name="Team">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -219,6 +220,23 @@
   </Function>
   <Function Name="dbo.Sport_Update" Method="Sport_Update">
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.League_Delete" Method="League_Delete">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.League_Insert" Method="League_Insert">
+    <Parameter Name="SportID" Parameter="sportID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RegisteredUserID" Parameter="registeredUserID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.League_Update" Method="League_Update">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SportID" Parameter="sportID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RegisteredUserID" Parameter="registeredUserID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
