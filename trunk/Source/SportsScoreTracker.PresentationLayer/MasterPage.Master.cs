@@ -19,8 +19,6 @@ namespace SportsScoreTracker.PresentationLayer
         {
             if (!IsPostBack) //Only true the first time the page is visited
             {
-                SetupLoginPanel(); //determine if user is logged in or not
-
                 List<Sport> sports = Sport.GetSports();
                 foreach (Sport sport in sports)
                 {
@@ -36,6 +34,8 @@ namespace SportsScoreTracker.PresentationLayer
                         sportNode.ChildNodes.Add(leagueNode);
                     }
                 }
+
+                SetupLoginPanel(); //determine if user is logged in or not
             }
         }
 
@@ -107,11 +107,31 @@ namespace SportsScoreTracker.PresentationLayer
                 pnlLogin.Visible = false;
                 pnlLoggedIn.Visible = true;
                 lblLoggedInName.Text = user.FirstName;
+
+                TreeNode myLeagueNode = new TreeNode("My Leagues");
+                myLeagueNode.NavigateUrl = ResolveUrl("~/MyLeagues.aspx");
+                treeMainMenu.Nodes.Add(myLeagueNode);
+
+                TreeNode addSportNode = new TreeNode("Add Sport");
+                addSportNode.NavigateUrl = ResolveUrl("~/AddSport.aspx");
+                treeMainMenu.Nodes.Add(addSportNode);
             }
             else //the user is not logged in
             {
                 pnlLogin.Visible = true;
                 pnlLoggedIn.Visible = false;
+
+                TreeNode myLeagueNode = treeMainMenu.FindNode("My Leagues");
+                if (myLeagueNode != null)
+                {
+                    treeMainMenu.Nodes.Remove(myLeagueNode);
+                }
+
+                TreeNode addSportNode = treeMainMenu.FindNode("Add Sport");
+                if (myLeagueNode != null)
+                {
+                    treeMainMenu.Nodes.Remove(addSportNode);
+                }
             }
         }
 
