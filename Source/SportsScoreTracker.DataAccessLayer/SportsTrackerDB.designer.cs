@@ -53,12 +53,6 @@ namespace SportsScoreTracker.DataAccessLayer
     partial void DeleteComment(Comment instance);
     #endregion
 		
-		public SportsTrackerDBDataContext() : 
-				base(global::SportsScoreTracker.DataAccessLayer.Properties.Settings.Default.SportsTrackerConnectionString1, mappingSource)
-		{
-			OnCreated();
-		}
-		
 		public SportsTrackerDBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -249,6 +243,20 @@ namespace SportsScoreTracker.DataAccessLayer
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gameID);
 			return ((ISingleResult<GetGameToDisplayResult>)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Sport_Insert")]
+		public int Sport_Insert([Parameter(Name="Name", DbType="NVarChar(50)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Sport_Update")]
+		public int Sport_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="Name", DbType="NVarChar(50)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, name);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	

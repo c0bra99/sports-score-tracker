@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="SportsTracker" Class="SportsTrackerDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=c0bra99.is-a-geek.com;Initial Catalog=SportsTracker;Persist Security Info=True;User ID=SportsTracker" SettingsObjectName="SportsScoreTracker.DataAccessLayer.Properties.Settings" SettingsPropertyName="SportsTrackerConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Team" Member="Teams">
     <Type Name="Team">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -213,5 +212,14 @@
       <Column Name="HomeLosses" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HomeWinningPercentage" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.Sport_Insert" Method="Sport_Insert">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sport_Update" Method="Sport_Update">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>
