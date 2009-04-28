@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Comment.cs" />
     <Compile Include="DisplayComment.cs" />
+    <Compile Include="DisplayGame.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="League.cs" />
     <Compile Include="Prediction.cs" />
