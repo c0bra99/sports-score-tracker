@@ -285,6 +285,13 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, sportID, registeredUserID, name);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.GetLeaguesByUserID")]
+		public ISingleResult<GetLeaguesByUserIDResult> GetLeaguesByUserID([Parameter(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<GetLeaguesByUserIDResult>)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
@@ -2866,6 +2873,86 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._HomeWinningPercentage != value))
 				{
 					this._HomeWinningPercentage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetLeaguesByUserIDResult
+	{
+		
+		private int _ID;
+		
+		private int _SportID;
+		
+		private int _RegisteredUserID;
+		
+		private string _Name;
+		
+		public GetLeaguesByUserIDResult()
+		{
+		}
+		
+		[Column(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_SportID", DbType="Int NOT NULL")]
+		public int SportID
+		{
+			get
+			{
+				return this._SportID;
+			}
+			set
+			{
+				if ((this._SportID != value))
+				{
+					this._SportID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_RegisteredUserID", DbType="Int NOT NULL")]
+		public int RegisteredUserID
+		{
+			get
+			{
+				return this._RegisteredUserID;
+			}
+			set
+			{
+				if ((this._RegisteredUserID != value))
+				{
+					this._RegisteredUserID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
 				}
 			}
 		}
