@@ -55,7 +55,7 @@ a:active {
 HEADINGS
 ******************/
 
-h1, .GameTeams {
+h1, .GameTeams, .SystemPredictedWinner {
 	font-size:1.6em;
 	padding:0;
 	margin:0 0 10px 0;
