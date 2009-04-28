@@ -52,6 +52,8 @@
                 </asp:Panel>
                 <asp:Panel ID="pnlLoggedIn" runat="server" Visible="False">
                     Welcome [<asp:Label ID="lblLoggedInName" runat="server" Text="first name" />]&nbsp;
+                    &nbsp;|&nbsp;
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ModifyPassword.aspx" ForeColor="DarkBlue">Modify Password</asp:HyperLink>&nbsp;&nbsp;
                     <asp:Button ID="btnLogout" runat="server" Text="Logout" onclick="btnLogout_Click" CssClass="Button" />
                 </asp:Panel>
             </td>
