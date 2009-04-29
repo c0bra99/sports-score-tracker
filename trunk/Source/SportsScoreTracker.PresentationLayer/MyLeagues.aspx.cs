@@ -48,6 +48,11 @@ namespace SportsScoreTracker.PresentationLayer
             deleteHeader.Text = "Delete";
             header.Cells.Add(deleteHeader);
 
+            TableHeaderCell gamesHeader = new TableHeaderCell();
+            gamesHeader.Text = "Teams";
+            header.Cells.Add(gamesHeader);
+
+
             List<League> leagues = League.GetLeaguesByUserID(reguserid);
             foreach (League league in leagues)
             {
@@ -55,32 +60,35 @@ namespace SportsScoreTracker.PresentationLayer
                 {
                     TableRow row = new TableRow();
                     TableCell nameCell = new TableCell();
-
                     row.Cells.Add(nameCell);
-
                     nameCell.Text = league.Name;
+                 
+                    TableCell modifyCell = new TableCell();
+                    row.Cells.Add(modifyCell);
 
-                    if (((MasterPage)this.Master).IsLoggedIn())
-                    {
-                        TableCell modifyCell = new TableCell();
-                        row.Cells.Add(modifyCell);
+                    ImageButton modifyLeagueLink = new ImageButton();
+                    modifyLeagueLink.ImageUrl = ResolveUrl("~/images/edit-icon.gif");
+                    modifyLeagueLink.PostBackUrl = ResolveUrl("~/ModifyLeague.aspx") + "?LeagueID=" + league.ID;
 
-                        ImageButton modifyLeagueLink = new ImageButton();
-                        modifyLeagueLink.ImageUrl = ResolveUrl("~/images/edit-icon.gif");
-                        modifyLeagueLink.PostBackUrl = ResolveUrl("~/ModifyLeague.aspx") + "?LeagueID=" + league.ID;
+                    modifyCell.Controls.Add(modifyLeagueLink);
+                    
+                    TableCell deleteCell = new TableCell();
+                    row.Cells.Add(deleteCell);
 
-                        modifyCell.Controls.Add(modifyLeagueLink);
-                        
-                        TableCell deleteCell = new TableCell();
-                        row.Cells.Add(deleteCell);
+                    ImageButton deleteLeagueLink = new ImageButton();
+                    deleteLeagueLink.ImageUrl = ResolveUrl("~/images/deleteX.gif");
+                    deleteLeagueLink.Click += new ImageClickEventHandler(deleteLeagueLink_Click);
+                    deleteLeagueLink.Attributes.Add("LeagueID", league.ID.ToString());
 
-                        ImageButton deleteLeagueLink = new ImageButton();
-                        deleteLeagueLink.ImageUrl = ResolveUrl("~/images/deleteX.gif");
-                        deleteLeagueLink.Click += new ImageClickEventHandler(deleteLeagueLink_Click);
-                        deleteLeagueLink.Attributes.Add("LeagueID", league.ID.ToString());
+                    deleteCell.Controls.Add(deleteLeagueLink);
 
-                        deleteCell.Controls.Add(deleteLeagueLink);
-                    }
+                    TableCell teamsCell = new TableCell();
+                    row.Cells.Add(teamsCell);
+
+                    HyperLink teamsLink = new HyperLink();
+                    teamsLink.Text = "Teams";
+                    teamsLink.NavigateUrl = ResolveUrl("~/ModifyTeams.aspx") + "?LeagueID=" + league.ID;
+                    teamsCell.Controls.Add(teamsLink);
 
                     tblMyLeagues.Rows.Add(row);
                 }
