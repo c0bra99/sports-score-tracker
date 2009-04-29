@@ -39,5 +39,17 @@ namespace SportsScoreTracker.BusinessLogicLayer
             db.Prediction_Insert(GameID, UserID, TeamID);
         }
 
+
+        /// <summary>
+        /// Gets what team a user voted would win for a specific game, or null if they haven't voted for this game.
+        /// </summary>
+        public static string GetPredictionByGameAndUserID(int gameID, int userID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+            GetPredictionByGameAndUserIDResult result = db.GetPredictionByGameAndUserID(gameID, userID).Single();
+            if (result != null)
+                return result.Name;
+            return null;
+        }
     }
 }
