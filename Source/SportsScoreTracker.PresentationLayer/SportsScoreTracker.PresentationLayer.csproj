@@ -85,6 +85,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditTeam.aspx.cs">
+      <DependentUpon>EditTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditTeam.aspx.designer.cs">
+      <DependentUpon>EditTeam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GamesByTeam.aspx.cs">
       <DependentUpon>GamesByTeam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -175,6 +182,7 @@
     <Content Include="AddNewLeague.aspx" />
     <Content Include="AddSport.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EditTeam.aspx" />
     <Content Include="GamesByTeam.aspx" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\bg-topnav.gif" />
