@@ -147,11 +147,11 @@ namespace SportsScoreTracker.BusinessLogicLayer
         /// <summary>
         /// Gets the games for a single team
         /// </summary>
-        public static List<Game> GetGamesByTeamID(int teamID)
+        public static List<Game> GetGamesByTeamID(int teamID, bool homeOnly, bool awayOnly)
         {
             SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
 
-            IEnumerable<Game> games = from o in db.GetGamesByTeamID(teamID, false, false)
+            IEnumerable<Game> games = from o in db.GetGamesByTeamID(teamID, homeOnly, awayOnly)
                                       select new Game
                                       {
                                           ID = o.ID, 
