@@ -15,20 +15,39 @@ namespace SportsScoreTracker.PresentationLayer
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
-            MasterPage master = (MasterPage)this.Master;
-            if (master.IsLoggedIn())
+            if (((MasterPage)this.Master).IsLoggedIn())
             {
-                RegisteredUser reguser = master.GetLoggedInUser();
-                int reguserid = reguser.ID;
-                FillLeaguesTable(reguserid);
+                FillLeaguesTable();
             }
         }
+
 
         /// <summary>
         /// Fills the league table 
         /// </summary>
-        private void FillLeaguesTable(int reguserid)
+        private void FillLeaguesTable()
         {
+            RegisteredUser reguser = ((MasterPage)this.Master).GetLoggedInUser();
+            int reguserid = reguser.ID;
+
+            tblMyLeagues.Rows.Clear();
+
+            //setup the header
+            TableHeaderRow header = new TableHeaderRow();
+            tblMyLeagues.Rows.Add(header);
+
+            TableHeaderCell leagueNameHeader = new TableHeaderCell();
+            leagueNameHeader.Text = "League Name";
+            header.Cells.Add(leagueNameHeader);
+
+            TableHeaderCell editHeader = new TableHeaderCell();
+            editHeader.Text = "Edit";
+            header.Cells.Add(editHeader);
+
+            TableHeaderCell deleteHeader = new TableHeaderCell();
+            deleteHeader.Text = "Delete";
+            header.Cells.Add(deleteHeader);
+
             List<League> leagues = League.GetLeaguesByUserID(reguserid);
             foreach (League league in leagues)
             {
@@ -79,7 +98,8 @@ namespace SportsScoreTracker.PresentationLayer
                 ImageButton deleteLeagueLink = (ImageButton)sender;
                 int leagueID = int.Parse(deleteLeagueLink.Attributes["LeagueID"]);
 
-                Comment.Delete(leagueID);
+                League.Delete(leagueID);
+                FillLeaguesTable();
             }
         }
 
