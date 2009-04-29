@@ -41,8 +41,17 @@ namespace SportsScoreTracker.PresentationLayer
 
                     nameCell.Text = league.Name;
 
-                    if (((MasterPage)this.Master).IsAdminLoggedIn())
+                    if (((MasterPage)this.Master).IsLoggedIn())
                     {
+                        TableCell modifyCell = new TableCell();
+                        row.Cells.Add(modifyCell);
+
+                        ImageButton modifyLeagueLink = new ImageButton();
+                        modifyLeagueLink.ImageUrl = ResolveUrl("~/images/edit-icon.gif");
+                        modifyLeagueLink.PostBackUrl = ResolveUrl("~/ModifyLeague.aspx") + "?LeagueID=" + league.ID;
+
+                        modifyCell.Controls.Add(modifyLeagueLink);
+                        
                         TableCell deleteCell = new TableCell();
                         row.Cells.Add(deleteCell);
 
