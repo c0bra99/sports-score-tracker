@@ -100,7 +100,7 @@
         <elementListCompartment Id="b44a680b-bb4e-4660-866a-a58394d6983b" absoluteBounds="5.015, 1.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(9 : 3.84375); (8.83333333333333 : 3.84375 : JumpStart); (8.66666666666667 : 3.84375 : JumpEnd); (5.875 : 3.84375); (5.875 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(9 : 3.84375); (5.875 : 3.84375); (5.875 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SportsTrackerDBDataContext/Game/Game_Comment" />
       <nodes>
         <classShapeMoniker Id="c99a286e-a223-4c22-b95a-3ad604a852e4" />
