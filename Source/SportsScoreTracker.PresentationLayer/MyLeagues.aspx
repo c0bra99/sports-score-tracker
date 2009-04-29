@@ -4,6 +4,7 @@
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell>League Name</asp:TableHeaderCell>
                     <asp:TableHeaderCell></asp:TableHeaderCell>
+                    <asp:TableHeaderCell></asp:TableHeaderCell>
                 </asp:TableHeaderRow>
            </asp:Table>
 </asp:Content>
