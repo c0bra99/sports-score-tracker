@@ -38,7 +38,7 @@
         <elementListCompartment Id="4239befc-db75-4389-aace-631d63ffcf60" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 4.69314697265625); (8.66666666666667 : 4.69314697265625 : JumpStart); (8.83333333333333 : 4.69314697265625 : JumpEnd); (9 : 4.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.25 : 4.69314697265625); (9 : 4.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SportsTrackerDBDataContext/Team/Team_Game" />
       <nodes>
         <classShapeMoniker Id="cfc1e09c-b7fd-4728-9bd4-bd698c384a42" />
@@ -100,14 +100,14 @@
         <elementListCompartment Id="b44a680b-bb4e-4660-866a-a58394d6983b" absoluteBounds="5.015, 1.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(9 : 3.84375); (5.875 : 3.84375); (5.875 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(9 : 3.84375); (8.83333333333333 : 3.84375 : JumpStart); (8.66666666666667 : 3.84375 : JumpEnd); (5.875 : 3.84375); (5.875 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SportsTrackerDBDataContext/Game/Game_Comment" />
       <nodes>
         <classShapeMoniker Id="c99a286e-a223-4c22-b95a-3ad604a852e4" />
         <classShapeMoniker Id="d5a3e925-f3c6-45e0-be38-d95841fd67a5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 3.796875); (4.13541666666667 : 3.796875 : JumpStart); (4.30208333333333 : 3.796875 : JumpEnd); (5.6874975 : 3.796875); (5.6874975 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 3.796875); (5.6874975 : 3.796875); (5.6874975 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SportsTrackerDBDataContext/RegisteredUser/RegisteredUser_Comment" />
       <nodes>
         <classShapeMoniker Id="74bbe418-8803-4b06-8a5e-503be884a06f" />
