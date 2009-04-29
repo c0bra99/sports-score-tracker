@@ -101,17 +101,10 @@
             <asp:Panel runat="server" ID="pnlViewComments">
                 Comment Type to View: <asp:DropDownList ID="ddlCommentType" runat="server" AutoPostBack="True" onselectedindexchanged="ddlCommentType_SelectedIndexChanged" />
                 &nbsp;<asp:LinkButton ID="lnkPostComment" runat="server" Text="Post Comment" onclick="lnkPostComment_Click" />
-                <asp:Table runat="server" ID="tblComments" BorderWidth="2px" CellPadding="5">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>Date</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>User</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Text</asp:TableHeaderCell>
-                        <asp:TableHeaderCell></asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-               </asp:Table>
+                <asp:Table runat="server" ID="tblComments" BorderWidth="2px" CellPadding="5" />
             </asp:Panel>
             <asp:Panel runat="server" ID="pnlPostComment" Visible="false">
-                <table enableviewstate="true">
+                <table style="text-align:left;">
                     <tr>
                         <td>
                             Comment Type to Add:
