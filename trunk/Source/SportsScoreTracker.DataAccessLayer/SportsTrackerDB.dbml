@@ -86,13 +86,6 @@
       <Column Name="Vote" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetPredictions" Method="GetPredictions">
-    <ElementType Name="GetPredictionsResult">
-      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.Prediction_Delete" Method="Prediction_Delete">
     <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
@@ -214,10 +207,6 @@
       <Column Name="HomeWinningPercentage" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.Sport_Insert" Method="Sport_Insert">
-    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.Sport_Update" Method="Sport_Update">
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
@@ -248,5 +237,62 @@
       <Column Name="RegisteredUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.Team_Update" Method="Team_Update">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LeagueID" Parameter="leagueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Game_Update" Method="Game_Update">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="HomeTeamID" Parameter="homeTeamID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AwayTeamID" Parameter="awayTeamID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="HomeScore" Parameter="homeScore" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AwayScore" Parameter="awayScore" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Team_Insert" Method="Team_Insert">
+    <Parameter Name="LeagueID" Parameter="leagueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sport_Insert" Method="Sport_Insert">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Game_Insert" Method="Game_Insert">
+    <Parameter Name="HomeTeamID" Parameter="homeTeamID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AwayTeamID" Parameter="awayTeamID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Date" Parameter="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="HomeScore" Parameter="homeScore" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AwayScore" Parameter="awayScore" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Comment_Insert" Method="Comment_Insert">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Timestamp" Parameter="timestamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Text" Parameter="text" Type="System.String" DbType="NVarChar(1000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Comment_Update" Method="Comment_Update">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GameID" Parameter="gameID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Timestamp" Parameter="timestamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Text" Parameter="text" Type="System.String" DbType="NVarChar(1000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Game_Delete" Method="Game_Delete">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Team_Delete" Method="Team_Delete">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

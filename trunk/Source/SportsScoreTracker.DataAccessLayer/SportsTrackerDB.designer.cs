@@ -146,13 +146,6 @@ namespace SportsScoreTracker.DataAccessLayer
 			return ((ISingleResult<GetPredictionResultsByGameIDResult>)(result.ReturnValue));
 		}
 		
-		[Function(Name="dbo.GetPredictions")]
-		public ISingleResult<GetPredictionsResult> GetPredictions()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<GetPredictionsResult>)(result.ReturnValue));
-		}
-		
 		[Function(Name="dbo.Prediction_Delete")]
 		public int Prediction_Delete([Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID, [Parameter(Name="UserID", DbType="Int")] System.Nullable<int> userID, [Parameter(Name="TeamID", DbType="Int")] System.Nullable<int> teamID)
 		{
@@ -251,13 +244,6 @@ namespace SportsScoreTracker.DataAccessLayer
 			return ((ISingleResult<GetGameToDisplayResult>)(result.ReturnValue));
 		}
 		
-		[Function(Name="dbo.Sport_Insert")]
-		public int Sport_Insert([Parameter(Name="Name", DbType="NVarChar(50)")] string name)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[Function(Name="dbo.Sport_Update")]
 		public int Sport_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="Name", DbType="NVarChar(50)")] string name)
 		{
@@ -291,6 +277,69 @@ namespace SportsScoreTracker.DataAccessLayer
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
 			return ((ISingleResult<GetLeaguesByUserIDResult>)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Team_Update")]
+		public int Team_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="LeagueID", DbType="Int")] System.Nullable<int> leagueID, [Parameter(Name="Name", DbType="NVarChar(100)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, leagueID, name);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Game_Update")]
+		public int Game_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="HomeTeamID", DbType="Int")] System.Nullable<int> homeTeamID, [Parameter(Name="AwayTeamID", DbType="Int")] System.Nullable<int> awayTeamID, [Parameter(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [Parameter(Name="HomeScore", DbType="Int")] System.Nullable<int> homeScore, [Parameter(Name="AwayScore", DbType="Int")] System.Nullable<int> awayScore)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, homeTeamID, awayTeamID, date, homeScore, awayScore);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Team_Insert")]
+		public int Team_Insert([Parameter(Name="LeagueID", DbType="Int")] System.Nullable<int> leagueID, [Parameter(Name="Name", DbType="NVarChar(100)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), leagueID, name);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Sport_Insert")]
+		public int Sport_Insert([Parameter(Name="Name", DbType="NVarChar(50)")] string name)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Game_Insert")]
+		public int Game_Insert([Parameter(Name="HomeTeamID", DbType="Int")] System.Nullable<int> homeTeamID, [Parameter(Name="AwayTeamID", DbType="Int")] System.Nullable<int> awayTeamID, [Parameter(Name="Date", DbType="DateTime")] System.Nullable<System.DateTime> date, [Parameter(Name="HomeScore", DbType="Int")] System.Nullable<int> homeScore, [Parameter(Name="AwayScore", DbType="Int")] System.Nullable<int> awayScore)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), homeTeamID, awayTeamID, date, homeScore, awayScore);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Comment_Insert")]
+		public int Comment_Insert([Parameter(Name="UserID", DbType="Int")] System.Nullable<int> userID, [Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID, [Parameter(Name="Type", DbType="SmallInt")] System.Nullable<short> type, [Parameter(Name="Timestamp", DbType="DateTime")] System.Nullable<System.DateTime> timestamp, [Parameter(Name="Text", DbType="NVarChar(1000)")] string text)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, gameID, type, timestamp, text);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Comment_Update")]
+		public int Comment_Update([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD, [Parameter(Name="UserID", DbType="Int")] System.Nullable<int> userID, [Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID, [Parameter(Name="Type", DbType="SmallInt")] System.Nullable<short> type, [Parameter(Name="Timestamp", DbType="DateTime")] System.Nullable<System.DateTime> timestamp, [Parameter(Name="Text", DbType="NVarChar(1000)")] string text)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, userID, gameID, type, timestamp, text);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Game_Delete")]
+		public int Game_Delete([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.Team_Delete")]
+		public int Team_Delete([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -2009,68 +2058,6 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._Vote != value))
 				{
 					this._Vote = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetPredictionsResult
-	{
-		
-		private int _GameID;
-		
-		private int _UserID;
-		
-		private int _TeamID;
-		
-		public GetPredictionsResult()
-		{
-		}
-		
-		[Column(Storage="_GameID", DbType="Int NOT NULL")]
-		public int GameID
-		{
-			get
-			{
-				return this._GameID;
-			}
-			set
-			{
-				if ((this._GameID != value))
-				{
-					this._GameID = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_TeamID", DbType="Int NOT NULL")]
-		public int TeamID
-		{
-			get
-			{
-				return this._TeamID;
-			}
-			set
-			{
-				if ((this._TeamID != value))
-				{
-					this._TeamID = value;
 				}
 			}
 		}
