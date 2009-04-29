@@ -369,6 +369,13 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), leagueID);
 			return ((ISingleResult<GetTeamsByLeagueIDResult>)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.GetGamesByTeamID")]
+		public ISingleResult<GetGamesByTeamIDResult> GetGamesByTeamID([Parameter(Name="TeamID", DbType="Int")] System.Nullable<int> teamID, [Parameter(Name="HomeOnly", DbType="Bit")] System.Nullable<bool> homeOnly, [Parameter(Name="AwayOnly", DbType="Bit")] System.Nullable<bool> awayOnly)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), teamID, homeOnly, awayOnly);
+			return ((ISingleResult<GetGamesByTeamIDResult>)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
@@ -3252,6 +3259,122 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._Name != value))
 				{
 					this._Name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetGamesByTeamIDResult
+	{
+		
+		private int _ID;
+		
+		private int _HomeTeamID;
+		
+		private int _AwayTeamID;
+		
+		private System.DateTime _Date;
+		
+		private System.Nullable<int> _HomeScore;
+		
+		private System.Nullable<int> _AwayScore;
+		
+		public GetGamesByTeamIDResult()
+		{
+		}
+		
+		[Column(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeTeamID", DbType="Int NOT NULL")]
+		public int HomeTeamID
+		{
+			get
+			{
+				return this._HomeTeamID;
+			}
+			set
+			{
+				if ((this._HomeTeamID != value))
+				{
+					this._HomeTeamID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayTeamID", DbType="Int NOT NULL")]
+		public int AwayTeamID
+		{
+			get
+			{
+				return this._AwayTeamID;
+			}
+			set
+			{
+				if ((this._AwayTeamID != value))
+				{
+					this._AwayTeamID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeScore", DbType="Int")]
+		public System.Nullable<int> HomeScore
+		{
+			get
+			{
+				return this._HomeScore;
+			}
+			set
+			{
+				if ((this._HomeScore != value))
+				{
+					this._HomeScore = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayScore", DbType="Int")]
+		public System.Nullable<int> AwayScore
+		{
+			get
+			{
+				return this._AwayScore;
+			}
+			set
+			{
+				if ((this._AwayScore != value))
+				{
+					this._AwayScore = value;
 				}
 			}
 		}
