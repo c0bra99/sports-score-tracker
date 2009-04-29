@@ -27,9 +27,26 @@ namespace SportsScoreTracker.BusinessLogicLayer
         public DateTime Timestamp;
         public string Text;
         
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public Comment() 
         { }
-        
+
+
+        /// <summary>
+        /// Constructor for a NEW comment
+        /// </summary>
+        public Comment(int userid, int gameid, short type, DateTime timestamp, string text)
+        {
+            ID = -1;
+            UserID = userid;
+            GameID = gameid;
+            Type = type;
+            Timestamp = timestamp;
+            Text = text;
+        }
+
 
         /// <summary>
         /// Constructor taking all parameters
@@ -83,5 +100,22 @@ namespace SportsScoreTracker.BusinessLogicLayer
             db.Comment_Delete(commentID);
         }
 
+
+        /// <summary>
+        /// Saves the new / updated Comment info to the database
+        /// </summary>
+        public void Save()
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            if (this.ID == -1) //new comment, need to insert
+            {
+                db.Comment_Insert(this.UserID, this.GameID, this.Type, this.Timestamp, this.Text);
+            }
+            else //old comment, need to update
+            {
+                db.Comment_Update(this.ID, this.UserID, this.GameID, this.Type, this.Timestamp, this.Text);
+            }
+        }
     }
 }
