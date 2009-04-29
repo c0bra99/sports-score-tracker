@@ -77,7 +77,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// <summary>
         /// Fires when the user clicks the login button
         /// </summary>
-        protected void btnLogin_Click(object sender, EventArgs e)
+        protected void lnkLogin_Click(object sender, EventArgs e)
         {
             RegisteredUser user = RegisteredUser.Authorize(txtUsername.Text.Trim(), txtPassword.Text);
             if (user != null)
@@ -139,7 +139,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// <summary>
         /// Fires when the user clicks the logout button
         /// </summary>
-        protected void btnLogout_Click(object sender, EventArgs e)
+        protected void lnkLogout_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
             Session.Abandon();

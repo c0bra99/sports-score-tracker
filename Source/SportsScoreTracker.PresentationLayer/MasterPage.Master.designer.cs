@@ -68,13 +68,13 @@ namespace SportsScoreTracker.PresentationLayer {
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// btnLogin control.
+        /// lnkLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLogin;
         
         /// <summary>
         /// lnkRegister control.
@@ -131,13 +131,13 @@ namespace SportsScoreTracker.PresentationLayer {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
         
         /// <summary>
-        /// btnLogout control.
+        /// lnkLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLogout;
         
         /// <summary>
         /// treeMainMenu control.
