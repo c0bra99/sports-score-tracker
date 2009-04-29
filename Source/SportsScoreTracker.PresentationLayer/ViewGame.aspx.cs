@@ -21,10 +21,6 @@ namespace SportsScoreTracker.PresentationLayer
                 FillGameInfo(gameID);
                 FillCommentTable(gameID, (short)Comment.Category.All);
 
-                FillCommentTypeList(ddlCommentType);
-                FillCommentTypeList(ddlPostCommentType);
-                ddlPostCommentType.Items.RemoveAt(0); //remove the "All" item, make user pick a type
-
                 MasterPage master = (MasterPage)this.Master;
                 if (master.IsLoggedIn())
                 {
@@ -55,7 +51,16 @@ namespace SportsScoreTracker.PresentationLayer
                     lblLoginToVoteMessage.Text = "Login to make your own prediction...";
                     lblLoginToVoteMessage.Visible = true;
                 }
+
+                if (!IsPostBack)
+                {
+                    FillCommentTypeList(ddlCommentType);
+                    FillCommentTypeList(ddlPostCommentType);
+                    ddlPostCommentType.Items.RemoveAt(0); //remove the "All" item, make user pick a type
+                }
             }
+
+            ddlCommentType_SelectedIndexChanged(null, null);
         }
 
 
@@ -118,6 +123,31 @@ namespace SportsScoreTracker.PresentationLayer
         private void FillCommentTable(int gameID, short commentType)
         {
             tblComments.Rows.Clear();
+            
+            //setup the header
+            TableHeaderRow header = new TableHeaderRow();
+            tblComments.Rows.Add(header);
+
+            TableHeaderCell dateHeader = new TableHeaderCell();
+            dateHeader.Text = "Date";
+            dateHeader.Width = new Unit(100, UnitType.Pixel);
+            header.Cells.Add(dateHeader);
+
+            TableHeaderCell userHeader = new TableHeaderCell();
+            userHeader.Text = "User";
+            dateHeader.Width = new Unit(100, UnitType.Pixel);
+            header.Cells.Add(userHeader);
+
+            TableHeaderCell textHeader = new TableHeaderCell();
+            textHeader.Text = "Text";
+            header.Cells.Add(textHeader);
+
+            if (((MasterPage)this.Master).IsAdminLoggedIn())
+            {
+                TableHeaderCell deleteHeader = new TableHeaderCell();
+                deleteHeader.Text = "Delete";
+                header.Cells.Add(deleteHeader);
+            }
 
             List<DisplayComment> comments = Comment.GetCommentsByGameID(gameID);
             foreach (DisplayComment comment in comments)
@@ -210,6 +240,7 @@ namespace SportsScoreTracker.PresentationLayer
                 comment.Save(); //save it to the DB
             }
 
+            txtPostCommentText.Text = string.Empty;
             pnlPostComment.Visible = false;
             pnlViewComments.Visible = true;
             ddlCommentType_SelectedIndexChanged(sender, e);
@@ -245,6 +276,8 @@ namespace SportsScoreTracker.PresentationLayer
 
             Prediction prediction = new Prediction(gameID, user.ID, teamID);
             prediction.Save();
+
+            FillGameInfo(gameID); //refresh the user prediction pie chart, etc...
         }
     }
 }
