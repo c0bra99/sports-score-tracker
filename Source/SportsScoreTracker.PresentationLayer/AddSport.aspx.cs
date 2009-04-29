@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SportsScoreTracker.BusinessLogicLayer;
 
 namespace SportsScoreTracker.PresentationLayer
 {
@@ -11,12 +12,21 @@ namespace SportsScoreTracker.PresentationLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            pnlAddSport.Visible = true;
+            lblAddSportConfirm.Visible = false;
         }
 
         protected void btnAddSport_Click(object sender, EventArgs e)
         {
+            MasterPage master = (MasterPage)this.Master;
 
+            string newsportname = txtNewSportName.Text;
+
+            Sport newsport = new Sport(newsportname);
+            newsport.Save();
+
+            pnlAddSport.Visible = false;
+            lblAddSportConfirm.Visible = true;
         }
     }
 }

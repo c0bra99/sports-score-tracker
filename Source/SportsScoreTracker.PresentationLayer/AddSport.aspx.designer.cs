@@ -14,6 +14,15 @@ namespace SportsScoreTracker.PresentationLayer {
     public partial class AddSport {
         
         /// <summary>
+        /// pnlAddSport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAddSport;
+        
+        /// <summary>
         /// txtNewSportName control.
         /// </summary>
         /// <remarks>
@@ -30,5 +39,14 @@ namespace SportsScoreTracker.PresentationLayer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddSport;
+        
+        /// <summary>
+        /// lblAddSportConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAddSportConfirm;
     }
 }

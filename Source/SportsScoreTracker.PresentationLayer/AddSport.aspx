@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AddSport.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.AddSport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Panel ID="pnlAddSport" runat="server">
     <table>
         <tr>
             <td>
@@ -10,12 +11,13 @@
             </td>
         </tr>
         <tr>
-            <td>
-            
-            </td>
-            <td>
+            <td align=right>
                 <asp:Button ID="btnAddSport" runat="server" Text="Add Sport" CssClass="Button" onclick="btnAddSport_Click" />
             </td>
         </tr>
-    </table>
-</asp:Content>
+        </table>
+        </asp:Panel>
+            
+                <asp:Label ID="lblAddSportConfirm" runat="server" Text="New sport created successfully!"></asp:Label>
+            
+            </asp:Content>
