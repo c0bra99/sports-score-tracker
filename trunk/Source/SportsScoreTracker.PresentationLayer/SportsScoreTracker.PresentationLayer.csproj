@@ -57,6 +57,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewLeague.aspx.cs">
+      <DependentUpon>AddNewLeague.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewLeague.aspx.designer.cs">
+      <DependentUpon>AddNewLeague.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddSport.aspx.cs">
       <DependentUpon>AddSport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,6 +150,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddNewLeague.aspx" />
     <Content Include="AddSport.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="images\banner.jpg" />
