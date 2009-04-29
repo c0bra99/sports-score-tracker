@@ -99,6 +99,13 @@
     <Compile Include="ModifyPassword.aspx.designer.cs">
       <DependentUpon>ModifyPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModifyTeams.aspx.cs">
+      <DependentUpon>ModifyTeams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModifyTeams.aspx.designer.cs">
+      <DependentUpon>ModifyTeams.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MyLeagues.aspx.cs">
       <DependentUpon>MyLeagues.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,6 +153,7 @@
     <Content Include="MasterPage.Master" />
     <Content Include="ModifyLeague.aspx" />
     <Content Include="ModifyPassword.aspx" />
+    <Content Include="ModifyTeams.aspx" />
     <Content Include="MyLeagues.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="ResetPassword.aspx" />
