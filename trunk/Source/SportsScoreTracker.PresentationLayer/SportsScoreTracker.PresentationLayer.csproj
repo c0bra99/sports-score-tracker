@@ -71,6 +71,13 @@
     <Compile Include="AddNewLeague.aspx.designer.cs">
       <DependentUpon>AddNewLeague.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddNewTeam.aspx.cs">
+      <DependentUpon>AddNewTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewTeam.aspx.designer.cs">
+      <DependentUpon>AddNewTeam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddSport.aspx.cs">
       <DependentUpon>AddSport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,6 +187,7 @@
   <ItemGroup>
     <Content Include="AddGame.aspx" />
     <Content Include="AddNewLeague.aspx" />
+    <Content Include="AddNewTeam.aspx" />
     <Content Include="AddSport.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="EditTeam.aspx" />

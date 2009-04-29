@@ -7,4 +7,6 @@
                     <asp:TableHeaderCell>Delete</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
            </asp:Table>
+               <br />
+    <asp:HyperLink ID="HyperLink1" runat="server" Text="Add New Team" NavigateUrl="~/AddNewTeam.aspx" />
 </asp:Content>
