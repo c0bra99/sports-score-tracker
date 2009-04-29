@@ -46,7 +46,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
         public static string GetPredictionByGameAndUserID(int gameID, int userID)
         {
             SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
-            GetPredictionByGameAndUserIDResult result = db.GetPredictionByGameAndUserID(gameID, userID).Single();
+            GetPredictionByGameAndUserIDResult result = db.GetPredictionByGameAndUserID(gameID, userID).SingleOrDefault();
             if (result != null)
                 return result.Name;
             return null;
