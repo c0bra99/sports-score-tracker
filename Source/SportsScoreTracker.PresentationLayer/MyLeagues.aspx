@@ -8,5 +8,6 @@
             <asp:TableHeaderCell>Teams</asp:TableHeaderCell>
         </asp:TableHeaderRow>
     </asp:Table>
+    <br />
     <asp:HyperLink ID="HyperLink1" runat="server" Text="Add New League" NavigateUrl="~/AddNewLeague.aspx" />
 </asp:Content>
