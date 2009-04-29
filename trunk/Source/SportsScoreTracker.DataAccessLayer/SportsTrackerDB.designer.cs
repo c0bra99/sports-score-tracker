@@ -341,6 +341,20 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.Game_Select")]
+		public ISingleResult<Game_SelectResult> Game_Select([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((ISingleResult<Game_SelectResult>)(result.ReturnValue));
+		}
+		
+		[Function(Name="dbo.GetPredictionByGameAndUserID")]
+		public ISingleResult<GetPredictionByGameAndUserIDResult> GetPredictionByGameAndUserID([Parameter(Name="GameID", DbType="Int")] System.Nullable<int> gameID, [Parameter(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gameID, userID);
+			return ((ISingleResult<GetPredictionByGameAndUserIDResult>)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
@@ -2929,6 +2943,148 @@ namespace SportsScoreTracker.DataAccessLayer
 		}
 		
 		[Column(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Game_SelectResult
+	{
+		
+		private int _ID;
+		
+		private int _HomeTeamID;
+		
+		private int _AwayTeamID;
+		
+		private System.DateTime _Date;
+		
+		private System.Nullable<int> _HomeScore;
+		
+		private System.Nullable<int> _AwayScore;
+		
+		public Game_SelectResult()
+		{
+		}
+		
+		[Column(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeTeamID", DbType="Int NOT NULL")]
+		public int HomeTeamID
+		{
+			get
+			{
+				return this._HomeTeamID;
+			}
+			set
+			{
+				if ((this._HomeTeamID != value))
+				{
+					this._HomeTeamID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayTeamID", DbType="Int NOT NULL")]
+		public int AwayTeamID
+		{
+			get
+			{
+				return this._AwayTeamID;
+			}
+			set
+			{
+				if ((this._AwayTeamID != value))
+				{
+					this._AwayTeamID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_HomeScore", DbType="Int")]
+		public System.Nullable<int> HomeScore
+		{
+			get
+			{
+				return this._HomeScore;
+			}
+			set
+			{
+				if ((this._HomeScore != value))
+				{
+					this._HomeScore = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_AwayScore", DbType="Int")]
+		public System.Nullable<int> AwayScore
+		{
+			get
+			{
+				return this._AwayScore;
+			}
+			set
+			{
+				if ((this._AwayScore != value))
+				{
+					this._AwayScore = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetPredictionByGameAndUserIDResult
+	{
+		
+		private string _Name;
+		
+		public GetPredictionByGameAndUserIDResult()
+		{
+		}
+		
+		[Column(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
