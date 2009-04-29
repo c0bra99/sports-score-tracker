@@ -376,6 +376,13 @@ namespace SportsScoreTracker.DataAccessLayer
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), teamID, homeOnly, awayOnly);
 			return ((ISingleResult<GetGamesByTeamIDResult>)(result.ReturnValue));
 		}
+		
+		[Function(Name="dbo.Team_Select")]
+		public ISingleResult<Team_SelectResult> Team_Select([Parameter(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((ISingleResult<Team_SelectResult>)(result.ReturnValue));
+		}
 	}
 	
 	[Table(Name="dbo.Team")]
@@ -3375,6 +3382,68 @@ namespace SportsScoreTracker.DataAccessLayer
 				if ((this._AwayScore != value))
 				{
 					this._AwayScore = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Team_SelectResult
+	{
+		
+		private int _ID;
+		
+		private int _LeagueID;
+		
+		private string _Name;
+		
+		public Team_SelectResult()
+		{
+		}
+		
+		[Column(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_LeagueID", DbType="Int NOT NULL")]
+		public int LeagueID
+		{
+			get
+			{
+				return this._LeagueID;
+			}
+			set
+			{
+				if ((this._LeagueID != value))
+				{
+					this._LeagueID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
 				}
 			}
 		}

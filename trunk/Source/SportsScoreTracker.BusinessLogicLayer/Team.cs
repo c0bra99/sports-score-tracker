@@ -97,5 +97,25 @@ namespace SportsScoreTracker.BusinessLogicLayer
                                        };
             return teams.ToList();
         }
+
+
+        /// <summary>
+        /// Gets a team to display to the user
+        /// </summary>
+        public static Team GetTeam(int teamID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            IEnumerable<Team> teams = from o in db.Team_Select(teamID)
+                                      select new Team
+                                      {
+                                         ID = o.ID,
+                                         LeagueID = o.LeagueID,
+                                         Name = o.Name
+                                      };
+            List<Team> teamList = teams.ToList();
+
+            return teamList.First();
+        }
     }
 }
