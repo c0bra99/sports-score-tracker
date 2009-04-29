@@ -84,6 +84,28 @@ namespace SportsScoreTracker.BusinessLogicLayer
         }
 
 
+        /// <summary>
+        /// Gets a game to display to the user
+        /// </summary>
+        public static Game GetGame(int gameID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            IEnumerable<Game> games = from o in db.Game_Select(gameID)
+                                         select new Game
+                                         { 
+                                             ID = o.ID,
+                                             HomeTeamID = o.HomeTeamID,
+                                             AwayTeamID = o.AwayTeamID,
+                                             Date = o.Date,
+                                             HomeScore = o.HomeScore.GetValueOrDefault(-1),
+                                             AwayScore = o.AwayScore.GetValueOrDefault(-1)
+                                         };
+            List<Game> gameList = games.ToList();
+
+            return gameList.First();
+        }
+
 
         /// <summary>
         /// Deletes this Game
