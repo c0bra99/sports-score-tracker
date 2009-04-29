@@ -6,6 +6,9 @@ using SportsScoreTracker.DataAccessLayer;
 
 namespace SportsScoreTracker.BusinessLogicLayer
 {
+    /// <summary>
+    /// Class for an instance of a game
+    /// </summary>
     public class Game
     {
         public int ID;
@@ -15,11 +18,26 @@ namespace SportsScoreTracker.BusinessLogicLayer
         public int HomeScore;
         public int AwayScore;
 
+
         /// <summary>
         /// Default constructor
         /// </summary>
         public Game()
         { }
+
+
+        /// <summary>
+        /// Constructor for a NEW game
+        /// </summary>
+        public Game(int hometeamid, int awayteamid, DateTime date, int homescore, int awayscore)
+        {
+            ID = -1;
+            HomeTeamID = hometeamid;
+            AwayTeamID = awayteamid;
+            Date = date;
+            HomeScore = homescore;
+            AwayScore = awayscore;
+        }
 
 
         /// <summary>
@@ -63,6 +81,44 @@ namespace SportsScoreTracker.BusinessLogicLayer
             List<DisplayGame> gameList = games.ToList();
 
             return gameList.First();
+        }
+
+
+
+        /// <summary>
+        /// Deletes this Game
+        /// </summary>
+        public void Delete()
+        {
+            Delete(this.ID);
+        }
+
+
+        /// <summary>
+        /// Deletes a game given the game ID
+        /// </summary>
+        public static void Delete(int gameID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+            db.Game_Delete(gameID);
+        }
+
+
+        /// <summary>
+        /// Saves the new / updated Game info to the database
+        /// </summary>
+        public void Save()
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            if (this.ID == -1) //new game, need to insert
+            {
+                db.Game_Insert(this.HomeTeamID, this.AwayTeamID, this.Date, this.HomeScore, this.AwayScore);
+            }
+            else //old game, need to update
+            {
+                db.Game_Update(this.ID, this.HomeTeamID, this.AwayTeamID, this.Date, this.HomeScore, this.AwayScore);
+            }
         }
     }
 }
