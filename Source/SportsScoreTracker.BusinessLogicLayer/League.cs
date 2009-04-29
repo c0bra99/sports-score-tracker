@@ -13,6 +13,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
         public int RegisteredUserID;
         public string Name;
 
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -30,6 +31,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
             RegisteredUserID = registereduserid;
             Name = name;
         }
+
 
         /// <summary>
         /// Constructor taking all parameters
@@ -59,6 +61,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
             return leagues.ToList();
         }
 
+
         /// <summary>
         /// saves the new / updated league info to the database
         /// </summary>
@@ -75,6 +78,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
                 db.League_Update(this.ID, this.SportID, this.RegisteredUserID, this.Name);
             }
         }
+
 
         /// <summary>
         /// Gets the leagues for a given user
@@ -94,6 +98,28 @@ namespace SportsScoreTracker.BusinessLogicLayer
             return leagues.ToList();
         }
 
+
+
+        /// <summary>
+        /// Gets a league by it's ID
+        /// </summary>
+        public static League GetLeague(int leagueID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            IEnumerable<League> leagues = from o in db.League_Select(leagueID)
+                                            select new League
+                                            {
+                                                ID = o.ID,
+                                                RegisteredUserID = o.RegisteredUserID,
+                                                SportID = o.SportID,
+                                                Name = o.Name
+                                            };
+
+            List<League> leagueList = leagues.ToList();
+
+            return leagueList.First();
+        }
 
         /// <summary>
         /// Deletes this league
