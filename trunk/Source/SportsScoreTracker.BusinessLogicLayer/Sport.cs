@@ -16,7 +16,17 @@ namespace SportsScoreTracker.BusinessLogicLayer
         /// </summary>
         public Sport() 
         { }
-        
+
+
+        /// <summary>
+        /// Constructor taking all parameters except for ID
+        /// </summary>
+        public Sport(string name)
+        {
+            ID = -1;
+            Name = name;
+        }
+
 
         /// <summary>
         /// Constructor taking all parameters
