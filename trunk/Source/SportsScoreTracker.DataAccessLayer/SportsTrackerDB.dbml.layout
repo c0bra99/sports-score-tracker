@@ -107,7 +107,7 @@
         <classShapeMoniker Id="d5a3e925-f3c6-45e0-be38-d95841fd67a5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 3.796875); (5.6874975 : 3.796875); (5.6874975 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 3.796875); (4.13541666666667 : 3.796875 : JumpStart); (4.30208333333333 : 3.796875 : JumpEnd); (5.6874975 : 3.796875); (5.6874975 : 3.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SportsTrackerDBDataContext/RegisteredUser/RegisteredUser_Comment" />
       <nodes>
         <classShapeMoniker Id="74bbe418-8803-4b06-8a5e-503be884a06f" />

@@ -142,5 +142,26 @@ namespace SportsScoreTracker.BusinessLogicLayer
                 db.Game_Update(this.ID, this.HomeTeamID, this.AwayTeamID, this.Date, this.HomeScore, this.AwayScore);
             }
         }
+
+
+        /// <summary>
+        /// Gets the games for a single team
+        /// </summary>
+        public static List<Game> GetGamesByTeamID(int teamID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            IEnumerable<Game> games = from o in db.GetGamesByTeamID(teamID, false, false)
+                                      select new Game
+                                      {
+                                          ID = o.ID, 
+                                          AwayScore = o.AwayScore.GetValueOrDefault(-1),
+                                          HomeScore = o.HomeScore.GetValueOrDefault(-1),
+                                          AwayTeamID = o.AwayTeamID,
+                                          HomeTeamID = o.HomeTeamID, 
+                                          Date = o.Date
+                                      };
+            return games.ToList();
+        }
     }
 }
