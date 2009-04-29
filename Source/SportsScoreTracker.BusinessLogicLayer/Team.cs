@@ -79,5 +79,23 @@ namespace SportsScoreTracker.BusinessLogicLayer
                 db.Team_Update(this.ID, this.LeagueID, this.Name);
             }
         }
+
+
+        /// <summary>
+        /// Gets the teams for a single league
+        /// </summary>
+        public static List<Team> GetTeamsByLeagueID(int leagueID)
+        {
+            SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
+
+            IEnumerable<Team> teams = from o in db.GetTeamsByLeagueID(leagueID)
+                                      select new Team
+                                       {
+                                           ID = o.ID, 
+                                           LeagueID = o.LeagueID,
+                                           Name = o.Name
+                                       };
+            return teams.ToList();
+        }
     }
 }

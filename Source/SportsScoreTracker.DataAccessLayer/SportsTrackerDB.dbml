@@ -322,4 +322,12 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GetTeamsByLeagueID" Method="GetTeamsByLeagueID">
+    <Parameter Name="LeagueID" Parameter="leagueID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTeamsByLeagueIDResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LeagueID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
