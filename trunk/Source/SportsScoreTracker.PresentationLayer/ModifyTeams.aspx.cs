@@ -43,6 +43,10 @@ namespace SportsScoreTracker.PresentationLayer
             deleteHeader.Text = "Delete";
             header.Cells.Add(deleteHeader);
 
+            TableHeaderCell gamesHeader = new TableHeaderCell();
+            gamesHeader.Text = "Games";
+            header.Cells.Add(gamesHeader);
+
             List<Team> teams = Team.GetTeamsByLeagueID(leagueID);
             foreach (Team team in teams)
             {
@@ -71,6 +75,14 @@ namespace SportsScoreTracker.PresentationLayer
                     deleteTeamLink.Attributes.Add("TeamID", team.ID.ToString());
 
                     deleteCell.Controls.Add(deleteTeamLink);
+
+                    TableCell gamesCell = new TableCell();
+                    row.Cells.Add(gamesCell);
+
+                    HyperLink gamesLink = new HyperLink();
+                    gamesLink.Text = "Games";
+                    gamesLink.NavigateUrl = ResolveUrl("~/GamesByTeam.aspx") + "?TeamID=" + team.ID;
+                    gamesCell.Controls.Add(gamesLink);
 
                     tblModifyTeams.Rows.Add(row);
                 }
