@@ -5,6 +5,7 @@
                     <asp:TableHeaderCell>League Name</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Edit</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Delete</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Teams</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
            </asp:Table>
 </asp:Content>
