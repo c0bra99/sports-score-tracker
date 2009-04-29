@@ -15,17 +15,59 @@ namespace SportsScoreTracker.PresentationLayer
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && !ScriptManager1.IsInAsyncPostBack)
+            if (!ScriptManager1.IsInAsyncPostBack)
             {
                 int gameID = int.Parse(Request.QueryString["GameID"]);
                 FillGameInfo(gameID);
                 FillCommentTable(gameID, (short)Comment.Category.All);
 
-                //Fill the drop down list with the different types of comment categories
-                foreach (int i in Enum.GetValues(typeof(Comment.Category)))
+                FillCommentTypeList(ddlCommentType);
+                FillCommentTypeList(ddlPostCommentType);
+                ddlPostCommentType.Items.RemoveAt(0); //remove the "All" item, make user pick a type
+
+                MasterPage master = (MasterPage)this.Master;
+                if (master.IsLoggedIn())
                 {
-                    ddlCommentType.Items.Add(new ListItem(((Comment.Category)i).ToString(), i.ToString()));
+                    lnkPostComment.Enabled = true;
+                    lnkPostComment.Text = "Post Comment";
+                    pnlPostPrediction.Visible = true;
+                    rbtnAway.Text = lblAway.Text;
+                    rbtnHome.Text = lblHome.Text;
+
+                    RegisteredUser user = ((MasterPage)this.Master).GetLoggedInUser();
+                    string userVote = Prediction.GetPredictionByGameAndUserID(gameID, user.ID);
+                    if (userVote != null)
+                    {
+                        lblLoginToVoteMessage.Text = "You have already voted for: " + userVote;
+                        lblLoginToVoteMessage.Visible = true;
+                        pnlPostPrediction.Visible = false;
+                    }
+                    else
+                    {
+                        lblLoginToVoteMessage.Visible = false;
+                    }
                 }
+                else
+                {
+                    lnkPostComment.Enabled = false;
+                    lnkPostComment.Text = "Login to post comments...";
+                    pnlPostPrediction.Visible = false;
+                    lblLoginToVoteMessage.Text = "Login to make your own prediction...";
+                    lblLoginToVoteMessage.Visible = true;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Fill the drop down list with the different types of comment categories
+        /// </summary>
+        private void FillCommentTypeList(DropDownList list)
+        {
+            list.Items.Clear();
+            foreach (int i in Enum.GetValues(typeof(Comment.Category)))
+            {
+                list.Items.Add(new ListItem(((Comment.Category)i).ToString(), i.ToString()));
             }
         }
 
@@ -41,7 +83,6 @@ namespace SportsScoreTracker.PresentationLayer
 
             this.lblAway.Text = game.AwayTeam;
             this.lblAwayScore.Text = game.AwayScore.ToString();
-            
 
             this.lblHome.Text = game.HomeTeam;
             this.lblHomeScore.Text = game.HomeScore.ToString();
@@ -68,7 +109,6 @@ namespace SportsScoreTracker.PresentationLayer
                 //if either team is just as likely to win
                 lblSystemPredictedWinner.Text = "Pick'em";
             }
-
         }
 
 
@@ -77,6 +117,8 @@ namespace SportsScoreTracker.PresentationLayer
         /// </summary>
         private void FillCommentTable(int gameID, short commentType)
         {
+            tblComments.Rows.Clear();
+
             List<DisplayComment> comments = Comment.GetCommentsByGameID(gameID);
             foreach (DisplayComment comment in comments)
             {
@@ -125,6 +167,7 @@ namespace SportsScoreTracker.PresentationLayer
                 int commentID = int.Parse(deleteCommentLink.Attributes["CommentID"]);
 
                 Comment.Delete(commentID);
+                ddlCommentType_SelectedIndexChanged(null, null);
             }
         }
 
@@ -138,6 +181,70 @@ namespace SportsScoreTracker.PresentationLayer
             short commentType = short.Parse(ddlCommentType.SelectedValue);
 
             FillCommentTable(gameID, commentType);
+        }
+
+
+        /// <summary>
+        /// Fires when the user clicks the "add comment" link
+        /// </summary>
+        protected void lnkPostComment_Click(object sender, EventArgs e)
+        {
+            pnlViewComments.Visible = false;
+            pnlPostComment.Visible = true;
+        }
+
+
+        /// <summary>
+        /// Fires when the user posts a comment
+        /// </summary>
+        protected void btnPostComment_Click(object sender, EventArgs e)
+        {
+            RegisteredUser user = ((MasterPage)this.Master).GetLoggedInUser();
+            if (user != null)
+            {
+                int gameID = int.Parse(Request.QueryString["GameID"]);
+                short commentType = short.Parse(ddlPostCommentType.SelectedValue);
+
+                //create a new comment
+                Comment comment = new Comment(user.ID, gameID, commentType, DateTime.Now, txtPostCommentText.Text);
+                comment.Save(); //save it to the DB
+            }
+
+            pnlPostComment.Visible = false;
+            pnlViewComments.Visible = true;
+            ddlCommentType_SelectedIndexChanged(sender, e);
+        }
+
+
+        /// <summary>
+        /// Fires when a user posts a comment
+        /// </summary>
+        protected void btnPostPrediction_Click(object sender, EventArgs e)
+        {
+            RegisteredUser user = ((MasterPage)this.Master).GetLoggedInUser();
+            int gameID = int.Parse(Request.QueryString["GameID"]);
+            int teamID = -1;
+
+            //get the game so we know the team ID's that are playing
+            Game game = Game.GetGame(gameID);
+            
+            //get which team the user selected
+            if (rbtnAway.Checked)
+            {
+                teamID = game.AwayTeamID;
+            }
+            else if (rbtnHome.Checked)
+            {
+                teamID = game.HomeTeamID;
+            }
+            else
+            {
+                lblError.Text = "Select a team before voting!";
+                return;
+            }
+
+            Prediction prediction = new Prediction(gameID, user.ID, teamID);
+            prediction.Save();
         }
     }
 }

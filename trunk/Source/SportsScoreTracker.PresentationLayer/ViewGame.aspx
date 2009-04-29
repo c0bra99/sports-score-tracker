@@ -30,7 +30,7 @@
     </table>
     <br /><br />
     <table>
-        <tr>
+        <tr style="vertical-align:top;">
             <td>
                 <asp:chart id="Chart1" runat="server" ImageType="Png" 
                     ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)" BackColor="#D3DFF0" 
@@ -67,18 +67,76 @@
             </td>
         </tr>
     </table>
+    <asp:Label ID="lblLoginToVoteMessage" runat="server" Text="Login to make your own prediction..." Visible="false" />
+    <asp:Panel runat="server" ID="pnlPostPrediction" Visible="false">
+        <table>
+            <tr>
+                <td colspan="2">
+                    Pick the team you predict to win:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RadioButton ID="rbtnAway" runat="server" GroupName="TeamToWin" />
+                </td>
+                <td>
+                    <asp:RadioButton ID="rbtnHome" runat="server" GroupName="TeamToWin" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <asp:Button ID="btnPostPrediction" runat="server" Text="Post Prediction" CssClass="Button" onclick="btnPostPrediction_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <asp:Label ID="lblError" runat="server" EnableViewState="False" CssClass="Error" />
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
     <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            Comment Type to View: <asp:DropDownList ID="ddlCommentType" runat="server" AutoPostBack="True" onselectedindexchanged="ddlCommentType_SelectedIndexChanged" />
-            <asp:Table runat="server" ID="tblComments" BorderWidth="2px" CellPadding="5">
-                <asp:TableHeaderRow>
-                    <asp:TableHeaderCell>Date</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>User</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Text</asp:TableHeaderCell>
-                    <asp:TableHeaderCell></asp:TableHeaderCell>
-                </asp:TableHeaderRow>
-           </asp:Table>
+            <asp:Panel runat="server" ID="pnlViewComments">
+                Comment Type to View: <asp:DropDownList ID="ddlCommentType" runat="server" AutoPostBack="True" onselectedindexchanged="ddlCommentType_SelectedIndexChanged" />
+                &nbsp;<asp:LinkButton ID="lnkPostComment" runat="server" Text="Post Comment" onclick="lnkPostComment_Click" />
+                <asp:Table runat="server" ID="tblComments" BorderWidth="2px" CellPadding="5">
+                    <asp:TableHeaderRow>
+                        <asp:TableHeaderCell>Date</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>User</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Text</asp:TableHeaderCell>
+                        <asp:TableHeaderCell></asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+               </asp:Table>
+            </asp:Panel>
+            <asp:Panel runat="server" ID="pnlPostComment" Visible="false">
+                <table enableviewstate="true">
+                    <tr>
+                        <td>
+                            Comment Type to Add:
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlPostCommentType" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Comment Text:
+                        </td>
+                        <td>
+                            <asp:TextBox runat="server" ID="txtPostCommentText" TextMode="MultiLine" Rows="3" Width="250px" />
+                            <asp:RegularExpressionValidator ID="ValidatorCommentLength" ControlToValidate="txtPostCommentText" Text="Must be <= 300 characters" ValidationExpression="^[\s\S]{0,300}$" runat="server" Enabled="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            <asp:Button ID="btnPostComment" runat="server" Text="Post Comment" 
+                                CssClass="Button" CausesValidation="true" onclick="btnPostComment_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </asp:Panel>
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="ddlCommentType" EventName="SelectedIndexChanged" />
