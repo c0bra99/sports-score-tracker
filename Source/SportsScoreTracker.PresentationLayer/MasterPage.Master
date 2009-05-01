@@ -40,7 +40,7 @@
                                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
                             </td>
                             <td>
-                                <asp:LinkButton ID="lnkLogin" runat="server" Text="Login" onclick="lnkLogin_Click" ForeColor="DarkBlue" />
+                                <asp:LinkButton ID="lnkLogin" runat="server" Text="Login" onclick="lnkLogin_Click" ForeColor="DarkBlue" CausesValidation="false" />
                             </td>
                         </tr>
                         <tr>
@@ -61,7 +61,7 @@
                     &nbsp;|&nbsp;
                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ModifyPassword.aspx" ForeColor="DarkBlue">Modify Password</asp:HyperLink>&nbsp;&nbsp;
                     &nbsp;|&nbsp;
-                    <asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" onclick="lnkLogout_Click" ForeColor="DarkBlue" />
+                    <asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" onclick="lnkLogout_Click" ForeColor="DarkBlue" CausesValidation="false" />
                 </asp:Panel>
             </td>
         </tr>
