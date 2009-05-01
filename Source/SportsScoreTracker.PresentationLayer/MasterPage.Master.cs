@@ -144,6 +144,19 @@ namespace SportsScoreTracker.PresentationLayer
             Session.RemoveAll();
             Session.Abandon();
             SetupLoginPanel();
+            GoHome(); //Redirect to home page after logout
         }
+
+
+        /// <summary>
+        /// Redirects the user to the home page
+        /// </summary>
+        public void GoHome()
+        {
+            Response.Redirect(ResolveUrl("~/Default.aspx"));
+        }
+
+
+        
     }
 }
