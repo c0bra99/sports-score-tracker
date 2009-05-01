@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Table runat="server" ID="tblMyLeagues" BorderWidth="2px" CellPadding="5">
         <asp:TableHeaderRow>
+            <asp:TableHeaderCell>Sport</asp:TableHeaderCell>
             <asp:TableHeaderCell>League Name</asp:TableHeaderCell>
             <asp:TableHeaderCell>Edit</asp:TableHeaderCell>
             <asp:TableHeaderCell>Delete</asp:TableHeaderCell>
