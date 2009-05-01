@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8B6EE596-3919-4810-8002-A7880AB7FDC1}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -65,6 +65,9 @@
       <Project>{1324EB08-D067-472A-A8BA-D42D63E1D559}</Project>
       <Name>SportsScoreTracker.DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
