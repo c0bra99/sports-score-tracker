@@ -41,13 +41,22 @@ namespace SportsScoreTracker.PresentationLayer {
         protected global::System.Web.UI.WebControls.Calendar calDate;
         
         /// <summary>
-        /// ddlTime control.
+        /// ddlHour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTime;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHour;
+        
+        /// <summary>
+        /// ddlMinute control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMinute;
         
         /// <summary>
         /// txtAwayScore control.

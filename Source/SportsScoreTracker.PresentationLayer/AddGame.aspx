@@ -31,7 +31,8 @@
                 Game Time:
             </td>
             <td>
-                <asp:DropDownList ID="ddlTime" runat="server" />
+                <asp:DropDownList ID="ddlHour" runat="server" />&nbsp;:&nbsp;
+                <asp:DropDownList ID="ddlMinute" runat="server" />&nbsp;
             </td>
         </tr>
         <tr>
