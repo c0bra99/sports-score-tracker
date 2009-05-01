@@ -11,5 +11,5 @@
         </asp:TableHeaderRow>
     </asp:Table>
     <br />
-    <asp:HyperLink ID="HyperLink1" runat="server" Text="Add New Game" NavigateUrl="~/AddGame.aspx" />
+    <asp:HyperLink ID="lnkAddNewGame" runat="server" Text="Add New Game" />
 </asp:Content>

@@ -17,6 +17,8 @@ namespace SportsScoreTracker.PresentationLayer
         {
             if (((MasterPage)this.Master).IsLoggedIn())
             {
+                int leagueID = int.Parse(Request.QueryString["LeagueID"]);
+                lnkAddNewGame.NavigateUrl = ResolveUrl("~/AddGame.aspx") + "?LeagueID=" + leagueID;
                 FillGamesTable();
             }
         }
