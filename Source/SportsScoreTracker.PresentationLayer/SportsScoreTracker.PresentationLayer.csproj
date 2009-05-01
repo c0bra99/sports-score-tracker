@@ -85,6 +85,7 @@
     <Compile Include="AddSport.aspx.designer.cs">
       <DependentUpon>AddSport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Authorization.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
