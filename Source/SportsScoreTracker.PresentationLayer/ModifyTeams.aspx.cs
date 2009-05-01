@@ -81,7 +81,7 @@ namespace SportsScoreTracker.PresentationLayer
 
                     HyperLink gamesLink = new HyperLink();
                     gamesLink.Text = "Games";
-                    gamesLink.NavigateUrl = ResolveUrl("~/GamesByTeam.aspx") + "?TeamID=" + team.ID;
+                    gamesLink.NavigateUrl = ResolveUrl("~/GamesByTeam.aspx") + "?TeamID=" + team.ID + "&LeagueID=" + leagueID;
                     gamesCell.Controls.Add(gamesLink);
 
                     tblModifyTeams.Rows.Add(row);
