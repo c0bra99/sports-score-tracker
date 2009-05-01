@@ -36,6 +36,10 @@ namespace SportsScoreTracker.PresentationLayer
             TableHeaderRow header = new TableHeaderRow();
             tblMyLeagues.Rows.Add(header);
 
+            TableHeaderCell sportHeader = new TableHeaderCell();
+            sportHeader.Text = "Sport";
+            header.Cells.Add(sportHeader);
+
             TableHeaderCell leagueNameHeader = new TableHeaderCell();
             leagueNameHeader.Text = "League Name";
             header.Cells.Add(leagueNameHeader);
@@ -52,6 +56,12 @@ namespace SportsScoreTracker.PresentationLayer
             gamesHeader.Text = "Teams";
             header.Cells.Add(gamesHeader);
 
+            List<Sport> sports = Sport.GetSports();
+            Dictionary<int, Sport> sportLookup = new Dictionary<int,Sport>(sports.Count);
+            foreach (Sport sport in sports)
+            {
+                sportLookup.Add(sport.ID, sport);
+            }
 
             List<League> leagues = League.GetLeaguesByUserID(reguserid);
             foreach (League league in leagues)
@@ -59,6 +69,10 @@ namespace SportsScoreTracker.PresentationLayer
                 if (league.RegisteredUserID == reguserid)
                 {
                     TableRow row = new TableRow();
+                    TableCell sportCell = new TableCell();
+                    row.Cells.Add(sportCell);
+                    sportCell.Text = sportLookup[league.SportID].Name;
+
                     TableCell nameCell = new TableCell();
                     row.Cells.Add(nameCell);
                     nameCell.Text = league.Name;
