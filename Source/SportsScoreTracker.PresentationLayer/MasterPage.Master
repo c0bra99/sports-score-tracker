@@ -18,7 +18,10 @@
     <table border="0" cellspacing="0" cellpadding="0" id="header" style="width:100%; background-color:#7F0000; color:#000000;">
         <tr>
             <td>
-                <img src="images/banner.jpg" style="width: 505px; height: 68px;" alt="Sports Score Tracker" />
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Default.aspx" 
+                    BorderStyle="None" BorderWidth="0px">
+                      <img src="images/banner.jpg" style="width: 505px; height: 68px;" alt="Sports Score Tracker" />
+                </asp:HyperLink>
             </td>
             <td>
                 <asp:Panel ID="pnlLogin" runat="server" Visible="True">
