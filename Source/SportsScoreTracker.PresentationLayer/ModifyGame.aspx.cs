@@ -17,6 +17,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            Authorization.Authorize(this, Authorization.AuthorizationLevel.RegisteredUser);
             if (!IsPostBack)
             {
                 for (int i = 0; i < 23; i++)
