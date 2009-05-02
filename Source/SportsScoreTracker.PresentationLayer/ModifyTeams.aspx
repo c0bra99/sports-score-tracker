@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModifyTeams.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.ModifyTeams" %>
+﻿<%@ Page Title="Modify Teams" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModifyTeams.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.ModifyTeams" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Table runat="server" ID="tblModifyTeams" BorderWidth="2px" CellPadding="5">
         <asp:TableHeaderRow>

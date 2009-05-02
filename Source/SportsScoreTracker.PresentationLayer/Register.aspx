@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.Register" %>
+﻿<%@ Page Title="Register New Account" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table runat="server" id="createUserTable" style="width:350px">
         <tr>

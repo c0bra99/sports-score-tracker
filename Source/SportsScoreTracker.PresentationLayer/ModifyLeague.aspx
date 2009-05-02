@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModifyLeague.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.ModifyLeague" %>
+﻿<%@ Page Title="Modify League" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModifyLeague.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.ModifyLeague" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <table runat="server" id="modifyLeagueTable" style="width:350px">
         <tr>
