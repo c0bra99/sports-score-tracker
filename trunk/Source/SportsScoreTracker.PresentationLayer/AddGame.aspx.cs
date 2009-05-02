@@ -33,12 +33,13 @@ namespace SportsScoreTracker.PresentationLayer
 
                 for (int i = 0; i < 23; i++)
                 {
-                    ddlHour.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                    ddlHour.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 }
                 for (int i = 0; i < 59; i++)
                 {
-                    ddlMinute.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                    ddlMinute.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 }
+                ddlAwayTeam.Focus(); //set focus on the away team to easy data entry
             }
         }
 
