@@ -73,7 +73,7 @@
         <tr>
             <%--Menu--%>
             <td id="content-left">
-                <asp:TreeView ID="treeMainMenu" runat="server" ExpandDepth="0">
+                <asp:TreeView ID="treeMainMenu" runat="server" ExpandDepth="1">
                 </asp:TreeView>
             </td>
             <%--Content--%>
