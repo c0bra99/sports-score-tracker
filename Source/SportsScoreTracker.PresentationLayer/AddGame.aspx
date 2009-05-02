@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Add Game" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AddGame.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.AddGame" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <h2>Enter New Game Information:</h2>
     <table>
         <tr>
@@ -23,7 +25,11 @@
                 Game Date:
             </td>
             <td>
-                <asp:Calendar ID="calDate" runat="server" />
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:Calendar ID="calDate" runat="server" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </td>
         </tr>
         <tr>
