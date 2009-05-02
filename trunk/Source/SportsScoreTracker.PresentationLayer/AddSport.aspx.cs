@@ -12,6 +12,7 @@ namespace SportsScoreTracker.PresentationLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Authorization.Authorize(this, Authorization.AuthorizationLevel.RegisteredUser);
             pnlAddSport.Visible = true;
             lblAddSportConfirm.Visible = false;
         }

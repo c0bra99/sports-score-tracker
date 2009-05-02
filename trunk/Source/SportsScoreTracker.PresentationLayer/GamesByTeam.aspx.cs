@@ -15,6 +15,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
+            Authorization.Authorize(this, Authorization.AuthorizationLevel.RegisteredUser);
             if (((MasterPage)this.Master).IsLoggedIn())
             {
                 int leagueID = int.Parse(Request.QueryString["LeagueID"]);

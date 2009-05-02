@@ -18,8 +18,9 @@ namespace SportsScoreTracker.PresentationLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Authorization.Authorize(this, Authorization.AuthorizationLevel.RegisteredUser);
         }
+
 
         /// <summary>
         /// Fires when user clicks on the modify password button after putting in 

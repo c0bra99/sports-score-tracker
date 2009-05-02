@@ -12,6 +12,7 @@ namespace SportsScoreTracker.PresentationLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Authorization.Authorize(this, Authorization.AuthorizationLevel.RegisteredUser);
             editTeamTable.Visible = true;
             lblConfirmation.Visible = false;
         }
