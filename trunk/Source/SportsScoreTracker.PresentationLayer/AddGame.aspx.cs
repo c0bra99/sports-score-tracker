@@ -31,11 +31,11 @@ namespace SportsScoreTracker.PresentationLayer
                     ddlHomeTeam.Items.Add(new ListItem(team.Name, team.ID.ToString()));
                 }
 
-                for (int i = 0; i < 23; i++)
+                for (int i = 0; i <= 23; i++)
                 {
                     ddlHour.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 }
-                for (int i = 0; i < 59; i++)
+                for (int i = 0; i <= 59; i++)
                 {
                     ddlMinute.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 }
