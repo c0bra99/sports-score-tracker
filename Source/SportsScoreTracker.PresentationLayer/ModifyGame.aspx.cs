@@ -20,11 +20,11 @@ namespace SportsScoreTracker.PresentationLayer
             Authorization.Authorize(this, Authorization.AuthorizationLevel.RegisteredUser);
             if (!IsPostBack)
             {
-                for (int i = 0; i < 23; i++)
+                for (int i = 0; i <= 23; i++)
                 {
                     ddlHour.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 }
-                for (int i = 0; i < 59; i++)
+                for (int i = 0; i <= 59; i++)
                 {
                     ddlMinute.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 }
