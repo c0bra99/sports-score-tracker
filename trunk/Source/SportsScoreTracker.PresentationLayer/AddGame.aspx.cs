@@ -57,7 +57,7 @@ namespace SportsScoreTracker.PresentationLayer
             DateTime gameDate = new DateTime(calDate.SelectedDate.Year, calDate.SelectedDate.Month, calDate.SelectedDate.Day, hour, minute, 0);
             int awayScore = 0;
             int homeScore = 0;
-            int.TryParse(txtAwayScore.Text, out homeScore);
+            int.TryParse(txtAwayScore.Text, out awayScore);
             int.TryParse(txtHomeScore.Text, out homeScore);
 
             Game newGame = new Game(homeTeamID, awayTeamID, gameDate, homeScore, awayScore);
