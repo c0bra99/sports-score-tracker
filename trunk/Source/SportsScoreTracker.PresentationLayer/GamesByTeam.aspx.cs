@@ -29,6 +29,7 @@ namespace SportsScoreTracker.PresentationLayer
         /// </summary>
         private void FillGamesTable()
         {
+            int leagueID = int.Parse(Request.QueryString["LeagueID"]);
             int teamID = int.Parse(Request.QueryString["TeamID"]);
             RegisteredUser reguser = ((MasterPage)this.Master).GetLoggedInUser();
             int reguserid = reguser.ID;
@@ -87,7 +88,7 @@ namespace SportsScoreTracker.PresentationLayer
 
                 ImageButton modifyLink = new ImageButton();
                 modifyLink.ImageUrl = ResolveUrl("~/images/edit-icon.gif");
-                modifyLink.PostBackUrl = ResolveUrl("~/ModifyGame.aspx") + "?GameID=" + game.ID;
+                modifyLink.PostBackUrl = ResolveUrl("~/ModifyGame.aspx") + "?GameID=" + game.ID + "&LeagueID=" + leagueID; ;
                 modifyCell.Controls.Add(modifyLink);
 
                 TableCell deleteCell = new TableCell();
