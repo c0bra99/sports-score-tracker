@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="LeagueSchedule.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.LeagueSchedule" %>
+﻿<%@ Page Title="League Schedule" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="LeagueSchedule.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.LeagueSchedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     Select a date range to view schedule for:
     <asp:ScriptManager ID="ScriptManager1" runat="server" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModifyPassword.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.ModifyPassword"%>
+﻿<%@ Page Title="Modify Password" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ModifyPassword.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.ModifyPassword"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <table runat="server" id="modifyPasswordTable" style="width:350px">
         <tr>

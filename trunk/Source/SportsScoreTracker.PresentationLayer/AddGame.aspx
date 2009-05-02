@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AddGame.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.AddGame" %>
+﻿<%@ Page Title="Add Game" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AddGame.aspx.cs" Inherits="SportsScoreTracker.PresentationLayer.AddGame" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Enter New Game Information:</h2>
     <table>
