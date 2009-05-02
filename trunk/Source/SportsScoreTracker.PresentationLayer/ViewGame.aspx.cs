@@ -29,19 +29,7 @@ namespace SportsScoreTracker.PresentationLayer
                     pnlPostPrediction.Visible = true;
                     rbtnAway.Text = lblAway.Text;
                     rbtnHome.Text = lblHome.Text;
-
-                    RegisteredUser user = ((MasterPage)this.Master).GetLoggedInUser();
-                    string userVote = Prediction.GetPredictionByGameAndUserID(gameID, user.ID);
-                    if (userVote != null)
-                    {
-                        lblLoginToVoteMessage.Text = "You have already voted for: " + userVote;
-                        lblLoginToVoteMessage.Visible = true;
-                        pnlPostPrediction.Visible = false;
-                    }
-                    else
-                    {
-                        lblLoginToVoteMessage.Visible = false;
-                    }
+                    RefreshPrediction();
                 }
                 else
                 {
@@ -63,6 +51,29 @@ namespace SportsScoreTracker.PresentationLayer
             ddlCommentType_SelectedIndexChanged(null, null);
         }
 
+
+        /// <summary>
+        /// Refreshes the user's prediction
+        /// </summary>
+        private void RefreshPrediction()
+        {
+            int gameID = int.Parse(Request.QueryString["GameID"]);
+            RegisteredUser user = ((MasterPage)this.Master).GetLoggedInUser();
+            if (user != null)
+            {
+                string userVote = Prediction.GetPredictionByGameAndUserID(gameID, user.ID);
+                if (userVote != null)
+                {
+                    lblLoginToVoteMessage.Text = "You have already voted for: " + userVote;
+                    lblLoginToVoteMessage.Visible = true;
+                    pnlPostPrediction.Visible = false;
+                }
+                else
+                {
+                    lblLoginToVoteMessage.Visible = false;
+                }
+            }
+        }
 
         /// <summary>
         /// Fill the drop down list with the different types of comment categories
@@ -243,6 +254,7 @@ namespace SportsScoreTracker.PresentationLayer
             txtPostCommentText.Text = string.Empty;
             pnlPostComment.Visible = false;
             pnlViewComments.Visible = true;
+            ddlCommentType.SelectedIndex = 0;
             ddlCommentType_SelectedIndexChanged(sender, e);
         }
 
@@ -276,7 +288,7 @@ namespace SportsScoreTracker.PresentationLayer
 
             Prediction prediction = new Prediction(gameID, user.ID, teamID);
             prediction.Save();
-
+            RefreshPrediction();
             FillGameInfo(gameID); //refresh the user prediction pie chart, etc...
         }
     }
