@@ -248,7 +248,7 @@ namespace SportsScoreTracker.BusinessLogicLayer
             SportsTrackerDBDataContext db = new SportsTrackerDBDataContext();
             db.ChangePassword(userEmail, passHash); //change the password in the DB
 
-            SendEmail("PasswordReset@SportsScoreTracker.com", userEmail, "Password Reset Notification", "Your password has been reset\r\nYour new password is: " + newPassword);
+            //SendEmail("PasswordReset@SportsScoreTracker.com", userEmail, "Password Reset Notification", "Your password has been reset\r\nYour new password is: " + newPassword);
      
             return true;
         }

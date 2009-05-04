@@ -50,7 +50,7 @@ namespace SportsScoreTracker.PresentationLayer
             RegisteredUser user = new RegisteredUser(email, txtFirstName.Text, txtLastName.Text, password, false);
             user.Save();
 
-            RegisteredUser.SendEmail("SportsScoreTracker@SportsScoreTracker.com", email, "Sports Score Tracker - Account Created", "Your account has successfully been created.");
+            //RegisteredUser.SendEmail("SportsScoreTracker@SportsScoreTracker.com", email, "Sports Score Tracker - Account Created", "Your account has successfully been created.");
 
             //hide the create user table
             createUserTable.Visible = false;
