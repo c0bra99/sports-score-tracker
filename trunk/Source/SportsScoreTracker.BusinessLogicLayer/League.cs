@@ -56,7 +56,9 @@ namespace SportsScoreTracker.BusinessLogicLayer
                                         select new League
                                         {
                                             ID = c.ID,
-                                            Name = c.Name
+                                            Name = c.Name,
+                                            SportID = c.SportID,
+                                            RegisteredUserID = c.RegisteredUserID
                                         };
             return leagues.ToList();
         }
