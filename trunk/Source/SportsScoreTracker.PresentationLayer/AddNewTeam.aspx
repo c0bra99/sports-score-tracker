@@ -17,6 +17,8 @@
             </td>
             <td>
                 <asp:DropDownList ID="ddlLeagues" runat="server" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"  ControlToValidate="ddlLeagues"
+                    ErrorMessage="League Required"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
