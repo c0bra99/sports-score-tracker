@@ -20,16 +20,24 @@ namespace SportsScoreTracker.PresentationLayer
                 {
                     ddlSports.Items.Add(new ListItem(sport.Name, sport.ID.ToString()));
                 }
+
+                ddlSports_SelectedIndexChanged(sender, e);
             }
         }
 
         protected void ddlSports_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RegisteredUser user = ((MasterPage)this.Master).GetLoggedInUser();
+            ddlLeagues.Items.Clear();
             int sportID = int.Parse(ddlSports.SelectedValue);
             List<League> leagues = League.GetLeaguesBySportID(sportID);
+            
             foreach (League league in leagues)
             {
-                ddlLeagues.Items.Add(new ListItem(league.Name, league.ID.ToString()));
+                if (user.ID == league.RegisteredUserID)
+                {
+                    ddlLeagues.Items.Add(new ListItem(league.Name, league.ID.ToString()));
+                }
             }
         }
 
