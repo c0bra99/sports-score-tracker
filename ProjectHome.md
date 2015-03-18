@@ -1,0 +1,7 @@
+Sports Score Tracker at a glance <br>
+The Sports Score Tracker is designed to function as a web-based application. Initially, the tracker will only provide data for the National Basketball Association (via input from the administrator). This data includes a full daily schedule, as well as division, conference, and league standings. Users will be able to click on individual games, and<br>
+follow the score real-time.Within the in-depth view of an individual game, users will also be able to post comments on this game. User comments will be filed under the tags of Injuries, Score, and Other. Users could choose to view only those comments within a given tag, or they can choose to view all comments. The site will not require users to login<br>
+unless they would like to post comments, vote on outcomes of games, or manage their own teams/leagues. Additionally, within the chosen game, users can vote on which team they think will win. All users that access the site will be given the option to view the opinions of all users that voted via vote percentages corresponding to each game.<br>
+Additionally, the sports score tracker will feature a smart system that calculates the most logical choice for the victor of the game. The smart outcome detection will take into account the winning percentage for each team. All users that access the site will be able to see the computer selection.<br>
+<br><br>
+Additionally, the sports score tracker will be flexible enough to allow registered users to input their own data for their own custom sports, leagues, teams, etc.
